@@ -1,0 +1,3175 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>GradPath AI | Master's Program & Scholarship Finder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --p: #4f46e5;
+        --pd: #3730a3;
+        --pl: #eef2ff;
+        --acc: #f59e0b;
+        --ok: #10b981;
+        --okbg: #d1fae5;
+        --oktx: #065f46;
+        --no: #ef4444;
+        --nobg: #fee2e2;
+        --notx: #991b1b;
+        --warn: #f59e0b;
+        --warnbg: #fef3c7;
+        --warntx: #92400e;
+        --bg: #f3f4f6;
+        --card: #fff;
+        --tx: #111827;
+        --mut: #6b7280;
+        --brd: #e5e7eb;
+        --sh: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        --shl: 0 20px 40px -8px rgba(0, 0, 0, 0.15);
+      }
+      [data-theme="dark"] {
+        --pl: #1e293b;
+        --bg: #0f172a;
+        --card: #1e293b;
+        --tx: #f1f5f9;
+        --mut: #94a3b8;
+        --brd: #334155;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--bg);
+        color: var(--tx);
+        line-height: 1.6;
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        transition:
+          background 0.3s,
+          color 0.3s;
+        overflow-x: hidden;
+      }
+      [dir="rtl"] body {
+        font-family: "Cairo", sans-serif;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      button {
+        font-family: inherit;
+        touch-action: manipulation;
+      }
+      header {
+        background: var(--card);
+        box-shadow: var(--sh);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0.7rem 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.8rem;
+      }
+      .nav-bar {
+        display: contents;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: var(--p);
+        cursor: pointer;
+        order: 1;
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+      .logo i {
+        color: var(--acc);
+        font-size: 1.5rem;
+      }
+      .nav-links {
+        display: flex;
+        gap: 0.3rem;
+        align-items: center;
+        flex-wrap: wrap;
+        order: 2;
+      }
+      .nl {
+        padding: 0.45rem 0.85rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--mut);
+        transition: all 0.25s;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.88rem;
+        border: none;
+        background: none;
+        white-space: nowrap;
+        min-height: 40px;
+      }
+      .nl:hover,
+      .nl.active {
+        background: var(--p);
+        color: #fff;
+      }
+      .nav-quick {
+        order: 3;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        flex-shrink: 0;
+      }
+      .icon-btn {
+        background: var(--acc);
+        color: #fff;
+        border: none;
+        padding: 0.45rem 0.9rem;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        transition: all 0.25s;
+        white-space: nowrap;
+        min-height: 42px;
+      }
+      .icon-btn:hover {
+        transform: translateY(-1px);
+      }
+      .theme-btn {
+        background: var(--brd);
+        color: var(--tx);
+      }
+      .menu-btn {
+        display: none;
+        background: var(--p);
+        color: #fff;
+        border: none;
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      main {
+        flex: 1;
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+        min-width: 0;
+      }
+      .pg {
+        display: none;
+        animation: fadeUp 0.4s ease;
+        min-width: 0;
+      }
+      .pg.active {
+        display: block;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 0.75rem 1.5rem;
+        border-radius: 10px;
+        font-weight: 700;
+        cursor: pointer;
+        border: none;
+        font-size: 0.95rem;
+        transition: all 0.25s;
+        min-height: 44px;
+        text-align: center;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shl);
+      }
+      .btn-p {
+        background: var(--p);
+        color: #fff;
+      }
+      .btn-acc {
+        background: var(--acc);
+        color: #fff;
+      }
+      .btn-ok {
+        background: var(--ok);
+        color: #fff;
+      }
+      .btn-out {
+        background: transparent;
+        border: 2px solid var(--brd);
+        color: var(--tx);
+      }
+      .btn-out:hover {
+        border-color: var(--p);
+        color: var(--p);
+      }
+      .btn-sm {
+        padding: 0.45rem 0.85rem;
+        font-size: 0.82rem;
+        border-radius: 8px;
+        min-height: 40px;
+      }
+      .hero {
+        text-align: center;
+        padding: 4rem 1.5rem;
+        background: linear-gradient(
+          135deg,
+          #4f46e5 0%,
+          #7c3aed 50%,
+          #a855f7 100%
+        );
+        border-radius: 20px;
+        color: #fff;
+        margin-bottom: 3rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero:before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 400px;
+        height: 400px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .hero h1 {
+        font-size: clamp(1.7rem, 5vw, 2.8rem);
+        font-weight: 900;
+        margin-bottom: 1rem;
+        line-height: 1.25;
+        position: relative;
+        z-index: 1;
+        overflow-wrap: break-word;
+      }
+      .hero p {
+        font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+        opacity: 0.95;
+        max-width: 650px;
+        margin: 0 auto 2rem;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+      }
+      .stats-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        position: relative;
+        z-index: 1;
+      }
+      .stat h3 {
+        font-size: 2rem;
+        font-weight: 800;
+      }
+      .stat p {
+        font-size: 0.85rem;
+        opacity: 0.85;
+      }
+      .feats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+        gap: 1.5rem;
+      }
+      .feat {
+        background: var(--card);
+        padding: 2rem;
+        border-radius: 14px;
+        box-shadow: var(--sh);
+        text-align: center;
+        transition: transform 0.3s;
+        min-width: 0;
+      }
+      .feat:hover {
+        transform: translateY(-5px);
+      }
+      .feat-ico {
+        width: 65px;
+        height: 65px;
+        background: linear-gradient(135deg, var(--p), var(--pd));
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        margin: 0 auto 1rem;
+      }
+      .feat h3 {
+        margin-bottom: 0.4rem;
+        color: var(--p);
+      }
+      .feat p {
+        color: var(--mut);
+        font-size: 0.88rem;
+      }
+      .form-box {
+        background: var(--card);
+        padding: 2.5rem;
+        border-radius: 14px;
+        box-shadow: var(--sh);
+        max-width: 800px;
+        margin: 0 auto;
+        width: 100%;
+      }
+      .pg-title {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .pg-title h2 {
+        font-size: 1.8rem;
+        color: var(--p);
+        margin-bottom: 0.3rem;
+      }
+      .pg-title p {
+        color: var(--mut);
+      }
+      .fg {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+      }
+      .fi {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        min-width: 0;
+      }
+      .fi.full {
+        grid-column: span 2;
+      }
+      label {
+        font-weight: 600;
+        font-size: 0.88rem;
+      }
+      input,
+      select,
+      textarea {
+        padding: 0.75rem 0.9rem;
+        border: 2px solid var(--brd);
+        border-radius: 10px;
+        font-family: inherit;
+        font-size: 0.92rem;
+        background: var(--bg);
+        color: var(--tx);
+        transition: border 0.3s;
+        max-width: 100%;
+        width: 100%;
+        min-height: 44px;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--p);
+        background: var(--card);
+      }
+      .err {
+        border-color: var(--no) !important;
+      }
+      .err-msg {
+        color: var(--no);
+        font-size: 0.78rem;
+        font-weight: 600;
+        display: none;
+      }
+      .err-msg.show {
+        display: block;
+      }
+      .res-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .res-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+        gap: 1.5rem;
+      }
+      .pcard {
+        background: var(--card);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: var(--sh);
+        transition: all 0.3s;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid transparent;
+        position: relative;
+        min-width: 0;
+      }
+      .pcard:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shl);
+        border-color: var(--p);
+      }
+      .cmp-check {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        z-index: 2;
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+        accent-color: var(--acc);
+      }
+      [dir="rtl"] .cmp-check {
+        left: auto;
+        right: 12px;
+      }
+      .pcard-top {
+        padding: 1.3rem 1.5rem;
+        background: linear-gradient(135deg, var(--p), var(--pd));
+        color: #fff;
+        position: relative;
+      }
+      .pcard-top h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.2rem;
+        padding-right: 70px;
+        padding-left: 30px;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        line-height: 1.4;
+      }
+      .pcard-top p {
+        opacity: 0.9;
+        font-size: 0.85rem;
+        overflow-wrap: break-word;
+      }
+      .match-badge {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.78rem;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+      [dir="rtl"] .match-badge {
+        right: auto;
+        left: 12px;
+      }
+      .pcard-body {
+        padding: 1.3rem 1.5rem;
+        flex: 1;
+        min-width: 0;
+      }
+      .irow {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.35rem 0;
+        font-size: 0.88rem;
+        color: var(--mut);
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+      .irow i {
+        color: var(--p);
+        width: 18px;
+        text-align: center;
+        flex-shrink: 0;
+      }
+      .irow strong {
+        color: var(--tx);
+      }
+      .badge {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 0.73rem;
+        font-weight: 700;
+        margin-top: 0.5rem;
+      }
+      .b-free {
+        background: var(--okbg);
+        color: var(--oktx);
+      }
+      .b-paid {
+        background: var(--nobg);
+        color: var(--notx);
+      }
+      .b-part {
+        background: var(--warnbg);
+        color: var(--warntx);
+      }
+      .pcard-foot {
+        padding: 0.8rem 1.5rem;
+        border-top: 1px solid var(--brd);
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      .no-res {
+        text-align: center;
+        padding: 3rem 1.5rem;
+        background: var(--card);
+        border-radius: 14px;
+        box-shadow: var(--sh);
+      }
+      .no-res i {
+        font-size: 3.5rem;
+        color: var(--mut);
+        margin-bottom: 1rem;
+      }
+      .cmp-bar {
+        background: var(--pl);
+        border: 2px solid var(--p);
+        border-radius: 14px;
+        padding: 1rem 1.5rem;
+        margin-bottom: 1.5rem;
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        position: sticky;
+        top: 70px;
+        z-index: 50;
+      }
+      .cmp-bar.show {
+        display: flex;
+      }
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        height: 100dvh;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        z-index: 200;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+      }
+      .modal.show {
+        display: flex;
+      }
+      .modal-box {
+        background: var(--card);
+        border-radius: 14px;
+        padding: 2rem;
+        max-width: 1000px;
+        width: min(1000px, calc(100vw - 2rem));
+        max-height: 90vh;
+        max-height: 90dvh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #cmp-content {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 8px;
+      }
+      .cmp-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+        min-width: 620px;
+      }
+      .cmp-table th,
+      .cmp-table td {
+        padding: 0.7rem 1rem;
+        border: 1px solid var(--brd);
+        text-align: left;
+        font-size: 0.88rem;
+        vertical-align: top;
+      }
+      [dir="rtl"] .cmp-table th,
+      [dir="rtl"] .cmp-table td {
+        text-align: right;
+      }
+      .cmp-table th {
+        background: var(--pl);
+        color: var(--p);
+        font-weight: 700;
+      }
+      .chat-box {
+        max-width: 850px;
+        margin: 0 auto;
+        background: var(--card);
+        border-radius: 20px;
+        box-shadow: var(--shl);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 620px;
+        max-height: calc(100dvh - 200px);
+        min-height: 480px;
+      }
+      .chat-hd {
+        background: linear-gradient(135deg, var(--p), var(--pd));
+        color: #fff;
+        padding: 1.2rem 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+      }
+      .chat-av {
+        width: 45px;
+        height: 45px;
+        background: var(--acc);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        flex-shrink: 0;
+      }
+      .chat-msgs {
+        flex: 1;
+        padding: 1.2rem;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        background: var(--bg);
+        -webkit-overflow-scrolling: touch;
+        min-height: 0;
+      }
+      .msg {
+        max-width: 80%;
+        padding: 0.75rem 1.1rem;
+        border-radius: 14px;
+        font-size: 0.92rem;
+        line-height: 1.55;
+        animation: fadeUp 0.3s;
+        white-space: pre-line;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+      .msg.bot {
+        background: var(--card);
+        align-self: flex-start;
+        border-bottom-left-radius: 3px;
+        box-shadow: var(--sh);
+      }
+      .msg.user {
+        background: var(--p);
+        color: #fff;
+        align-self: flex-end;
+        border-bottom-right-radius: 3px;
+      }
+      [dir="rtl"] .msg.bot {
+        border-bottom-left-radius: 14px;
+        border-bottom-right-radius: 3px;
+        align-self: flex-end;
+      }
+      [dir="rtl"] .msg.user {
+        border-bottom-right-radius: 14px;
+        border-bottom-left-radius: 3px;
+        align-self: flex-start;
+      }
+      .chat-link {
+        color: var(--p);
+        text-decoration: underline;
+        font-weight: 700;
+        word-break: break-all;
+        overflow-wrap: anywhere;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 2px 6px;
+        border-radius: 6px;
+        background: rgba(79, 70, 229, 0.08);
+        transition: all 0.2s;
+        max-width: 100%;
+      }
+      .chat-link:hover {
+        background: var(--p);
+        color: #fff !important;
+        text-decoration: none;
+      }
+      .msg.user .chat-link {
+        color: #fef08a;
+        background: rgba(255, 255, 255, 0.15);
+      }
+      .msg.user .chat-link:hover {
+        background: #fff;
+        color: var(--pd) !important;
+      }
+      .typing {
+        display: flex;
+        gap: 4px;
+        padding: 0.75rem 1.1rem;
+        align-self: flex-start;
+        background: var(--card);
+        border-radius: 14px;
+        box-shadow: var(--sh);
+        width: fit-content;
+      }
+      .typing span {
+        width: 8px;
+        height: 8px;
+        background: var(--mut);
+        border-radius: 50%;
+        animation: bounce 0.6s infinite alternate;
+      }
+      .typing span:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .typing span:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      @keyframes bounce {
+        to {
+          transform: translateY(-6px);
+          opacity: 0.4;
+        }
+      }
+      .chat-in {
+        padding: 0.8rem;
+        background: var(--card);
+        border-top: 1px solid var(--brd);
+        display: flex;
+        gap: 8px;
+        flex-shrink: 0;
+        padding-bottom: calc(0.8rem + env(safe-area-inset-bottom, 0px));
+      }
+      .chat-in input {
+        flex: 1;
+        border-radius: 25px;
+        padding: 0.7rem 1.2rem;
+        min-width: 0;
+      }
+      .chat-in button {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: var(--p);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+      .qr {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+      .qr-btn {
+        background: var(--pl);
+        border: 1px solid var(--p);
+        color: var(--p);
+        padding: 5px 11px;
+        border-radius: 20px;
+        font-size: 0.78rem;
+        cursor: pointer;
+        font-weight: 600;
+        min-height: 32px;
+      }
+      .qr-btn:hover {
+        background: var(--p);
+        color: #fff;
+      }
+      .loader {
+        display: none;
+        text-align: center;
+        padding: 3rem;
+      }
+      .loader.show {
+        display: block;
+      }
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid var(--brd);
+        border-top-color: var(--p);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        margin: 0 auto 1rem;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .toast {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: var(--card);
+        border: 1px solid var(--brd);
+        border-left: 4px solid var(--ok);
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        box-shadow: var(--shl);
+        z-index: 300;
+        display: none;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        animation: slideIn 0.3s;
+        max-width: min(90vw, 420px);
+      }
+      .toast.show {
+        display: flex;
+      }
+      [dir="rtl"] .toast {
+        right: auto;
+        left: 2rem;
+        border-left: 1px solid var(--brd);
+        border-right: 4px solid var(--ok);
+      }
+      @keyframes slideIn {
+        from {
+          transform: translateX(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      footer {
+        background: #111827;
+        color: #fff;
+        padding: 2.5rem 1.5rem calc(1.5rem + env(safe-area-inset-bottom, 0px));
+        margin-top: auto;
+      }
+      .foot-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+        gap: 2rem;
+      }
+      .foot-col h4 {
+        margin-bottom: 0.8rem;
+        color: var(--acc);
+      }
+      .foot-col p,
+      .foot-col a {
+        color: #9ca3af;
+        font-size: 0.88rem;
+        display: block;
+        margin-bottom: 0.4rem;
+        cursor: pointer;
+      }
+      .foot-col a:hover {
+        color: #fff;
+      }
+      .foot-bottom {
+        text-align: center;
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid #374151;
+        color: #6b7280;
+        font-size: 0.82rem;
+      }
+      /* ===== TABLET ===== */
+      @media (max-width: 1024px) {
+        main {
+          padding: 1.5rem 1.2rem;
+        }
+        .hero {
+          padding: 3rem 1.2rem;
+        }
+        .res-grid {
+          grid-template-columns: repeat(
+            auto-fill,
+            minmax(min(100%, 300px), 1fr)
+          );
+        }
+      }
+      /* ===== NAV BREAKPOINT: hamburger menu ===== */
+      @media (max-width: 880px) {
+        .nav {
+          flex-direction: column;
+          align-items: stretch;
+          padding: 0.6rem 0.9rem;
+          gap: 0;
+        }
+        .nav-bar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+        }
+        .menu-btn {
+          display: inline-flex;
+        }
+        .nav-quick {
+          gap: 0.35rem;
+        }
+        .nav-quick .icon-btn {
+          padding: 0.45rem 0.65rem;
+          font-size: 0.8rem;
+          min-height: 42px;
+        }
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          align-items: stretch;
+          width: 100%;
+          margin-top: 0.6rem;
+          padding-top: 0.7rem;
+          border-top: 1px solid var(--brd);
+          gap: 0.4rem;
+        }
+        .nav-links.open {
+          display: flex;
+          animation: fadeUp 0.25s ease;
+        }
+        .nav-links .nl {
+          width: 100%;
+          justify-content: flex-start;
+          padding: 0.75rem 0.95rem;
+          font-size: 0.92rem;
+          border: 1px solid var(--brd);
+          border-radius: 10px;
+        }
+        .nav-links .nl.active {
+          border-color: var(--p);
+        }
+        .cmp-bar {
+          top: 62px;
+        }
+      }
+      /* ===== MOBILE ===== */
+      @media (max-width: 768px) {
+        main {
+          padding: 1.2rem 0.9rem;
+        }
+        .hero {
+          padding: 2.2rem 1rem;
+          margin-bottom: 2rem;
+          border-radius: 16px;
+        }
+        .hero h1 {
+          font-size: 1.85rem;
+        }
+        .hero p {
+          font-size: 0.95rem;
+        }
+        .hero-btns .btn {
+          flex: 1 1 220px;
+        }
+        .fg {
+          grid-template-columns: 1fr;
+        }
+        .fi.full {
+          grid-column: span 1;
+        }
+        .form-box {
+          padding: 1.5rem 1.2rem;
+        }
+        input,
+        select,
+        textarea {
+          font-size: 16px !important;
+        }
+        .stats-row {
+          grid-template-columns: 1fr;
+          gap: 0.8rem;
+          margin-top: 2rem;
+          padding-top: 1.5rem;
+        }
+        .stat h3 {
+          font-size: 1.7rem;
+        }
+        .res-grid {
+          grid-template-columns: 1fr;
+          gap: 1.1rem;
+        }
+        .pcard-top {
+          padding: 1rem 1.1rem;
+        }
+        .pcard-top h3 {
+          font-size: 1rem;
+          padding: 0;
+          margin-top: 34px;
+        }
+        .pcard-top p {
+          font-size: 0.83rem;
+        }
+        .match-badge {
+          top: 10px;
+          right: 10px;
+          font-size: 0.72rem;
+          padding: 3px 9px;
+        }
+        [dir="rtl"] .match-badge {
+          right: auto;
+          left: 10px;
+        }
+        .cmp-check {
+          top: 10px;
+          left: 10px;
+          width: 24px;
+          height: 24px;
+        }
+        [dir="rtl"] .cmp-check {
+          left: auto;
+          right: 10px;
+        }
+        .pcard-body {
+          padding: 1.1rem;
+        }
+        .pcard-foot {
+          padding: 0.75rem 1rem;
+        }
+        .pcard-foot .btn-p {
+          flex: 1;
+        }
+        .chat-box {
+          height: calc(100dvh - 170px);
+          min-height: 460px;
+          max-height: none;
+          border-radius: 16px;
+        }
+        .chat-msgs {
+          padding: 0.9rem;
+        }
+        .msg {
+          max-width: 86%;
+          font-size: 0.88rem;
+        }
+        .qr-btn {
+          padding: 8px 13px;
+          font-size: 0.8rem;
+          min-height: 36px;
+        }
+        .modal {
+          padding: 0.6rem;
+        }
+        .modal-box {
+          padding: 1.3rem 1rem;
+          width: calc(100vw - 1.2rem);
+        }
+        .cmp-table th,
+        .cmp-table td {
+          padding: 0.55rem 0.65rem;
+          font-size: 0.82rem;
+        }
+        .cmp-table th:first-child,
+        .cmp-table td:first-child {
+          position: sticky;
+          left: 0;
+          background: var(--card);
+          z-index: 1;
+          min-width: 105px;
+          box-shadow: 2px 0 4px rgba(0, 0, 0, 0.06);
+        }
+        .cmp-table thead th:first-child,
+        .cmp-table tr th:first-child {
+          background: var(--pl);
+        }
+        [dir="rtl"] .cmp-table th:first-child,
+        [dir="rtl"] .cmp-table td:first-child {
+          left: auto;
+          right: 0;
+          box-shadow: -2px 0 4px rgba(0, 0, 0, 0.06);
+        }
+        .toast {
+          left: 1rem;
+          right: 1rem;
+          bottom: 1rem;
+          justify-content: center;
+          text-align: center;
+        }
+        .foot-inner {
+          gap: 1.3rem;
+        }
+      }
+      /* ===== SMALL PHONES ===== */
+      @media (max-width: 480px) {
+        main {
+          padding: 1rem 0.75rem;
+        }
+        .hero {
+          padding: 1.8rem 0.9rem;
+        }
+        .hero h1 {
+          font-size: 1.55rem;
+          line-height: 1.35;
+        }
+        .hero-btns {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .hero-btns .btn {
+          width: 100%;
+        }
+        .feat {
+          padding: 1.5rem 1rem;
+        }
+        .pg-title h2 {
+          font-size: 1.4rem;
+        }
+        .form-box {
+          padding: 1.2rem 0.9rem;
+          border-radius: 12px;
+        }
+        .res-head h2 {
+          font-size: 1.25rem;
+        }
+        .pcard-top h3 {
+          font-size: 0.95rem;
+        }
+        .irow {
+          font-size: 0.84rem;
+        }
+        .btn {
+          font-size: 0.9rem;
+        }
+        .chat-box {
+          height: calc(100dvh - 150px);
+          min-height: 440px;
+        }
+        .chat-hd {
+          padding: 0.9rem 1rem;
+        }
+        .chat-hd h3 {
+          font-size: 1rem;
+        }
+        .msg {
+          max-width: 90%;
+        }
+      }
+      /* ===== VERY SMALL ===== */
+      @media (max-width: 360px) {
+        .logo {
+          font-size: 1.1rem;
+        }
+        .logo i {
+          font-size: 1.2rem;
+        }
+        .nav-quick .icon-btn {
+          padding: 0.4rem 0.5rem;
+          font-size: 0.75rem;
+        }
+        .menu-btn {
+          width: 40px;
+          height: 40px;
+        }
+        .hero h1 {
+          font-size: 1.35rem;
+        }
+        .pcard-top h3 {
+          font-size: 0.9rem;
+        }
+      }
+      /* ===== LANDSCAPE PHONES ===== */
+      @media (max-height: 500px) and (orientation: landscape) {
+        .chat-box {
+          height: calc(100dvh - 120px);
+          min-height: 320px;
+        }
+        .hero {
+          padding: 1.5rem 1rem;
+          margin-bottom: 1.5rem;
+        }
+        .stats-row {
+          grid-template-columns: repeat(3, 1fr);
+          margin-top: 1.2rem;
+          padding-top: 1.2rem;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="nav">
+        <div class="nav-bar">
+          <div class="logo" onclick="go('home')">
+            <i class="fa-solid fa-graduation-cap"></i
+            ><span data-e="GradPath AI" data-a="جراد باث">GradPath AI</span>
+          </div>
+          <div class="nav-quick">
+            <button
+              class="icon-btn theme-btn"
+              onclick="flipTheme()"
+              title="Theme"
+              aria-label="Theme"
+            >
+              <i class="fa-solid fa-moon" id="theme-ico"></i>
+            </button>
+            <button class="icon-btn" onclick="flipLang()" aria-label="Language">
+              <i class="fa-solid fa-globe"></i><span id="ltxt">العربية</span>
+            </button>
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
+              <i class="fa-solid fa-bars" id="menu-ico"></i>
+            </button>
+          </div>
+        </div>
+        <nav class="nav-links" id="navLinks">
+          <button class="nl active" onclick="go('home', this)">
+            <i class="fa-solid fa-house"></i
+            ><span data-e="Home" data-a="الرئيسية">Home</span>
+          </button>
+          <button class="nl" onclick="go('search', this)">
+            <i class="fa-solid fa-magnifying-glass"></i
+            ><span data-e="Find Programs" data-a="ابحث">Find Programs</span>
+          </button>
+          <button class="nl" onclick="go('saved', this)">
+            <i class="fa-solid fa-bookmark"></i
+            ><span data-e="Saved" data-a="المحفوظات">Saved</span
+            ><span
+              id="saved-count"
+              style="
+                background: var(--acc);
+                color: #fff;
+                padding: 1px 7px;
+                border-radius: 10px;
+                font-size: 0.7rem;
+              "
+              >0</span
+            >
+          </button>
+          <button class="nl" onclick="go('chat', this)">
+            <i class="fa-solid fa-robot"></i
+            ><span data-e="AI Advisor" data-a="المساعد الذكي">AI Advisor</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section id="pg-home" class="pg active">
+        <div class="hero">
+          <h1
+            data-e="Find Your Perfect Master's Program Worldwide"
+            data-a="اعثر على برنامج الماجستير المثالي حول العالم"
+          >
+            Find Your Perfect Master's Program Worldwide
+          </h1>
+          <p
+            data-e="Smart matching based on your grades, field, budget & interests. Get AI-powered recommendations in seconds."
+            data-a="مطابقة ذكية بناءً على درجاتك ومجالك وميزانيتك واهتماماتك. احصل على توصيات مدعومة بالذكاء الاصطناعي في ثوان."
+          >
+            Smart matching based on your grades, field, budget & interests. Get
+            AI-powered recommendations in seconds.
+          </p>
+          <div class="hero-btns">
+            <button class="btn btn-acc" onclick="go('search')">
+              <i class="fa-solid fa-rocket"></i
+              ><span data-e="Start Searching" data-a="ابدأ البحث"
+                >Start Searching</span
+              >
+            </button>
+            <button
+              class="btn btn-out"
+              style="border-color: rgba(255, 255, 255, 0.4); color: #fff"
+              onclick="go('chat')"
+            >
+              <i class="fa-solid fa-robot"></i
+              ><span data-e="Talk to AI" data-a="تحدث مع الذكاء"
+                >Talk to AI</span
+              >
+            </button>
+          </div>
+          <div class="stats-row">
+            <div class="stat">
+              <h3>50+</h3>
+              <p data-e="Verified Programs" data-a="برنامج معتمد">
+                Verified Programs
+              </p>
+            </div>
+            <div class="stat">
+              <h3>20+</h3>
+              <p data-e="Countries" data-a="دول">Countries</p>
+            </div>
+            <div class="stat">
+              <h3>100%</h3>
+              <p data-e="Free to Use" data-a="مجاني بالكامل">Free to Use</p>
+            </div>
+          </div>
+        </div>
+        <div class="feats">
+          <div class="feat">
+            <div class="feat-ico"><i class="fa-solid fa-bullseye"></i></div>
+            <h3 data-e="Smart Matching" data-a="مطابقة ذكية">Smart Matching</h3>
+            <p
+              data-e="Every program scored 0-100% based on YOUR profile — GPA, field, degree, budget."
+              data-a="كل برنامج مُقيّم 0-100% بناءً على ملفك — المعدل والمجال والدرجة والميزانية."
+            >
+              Every program scored 0-100% based on YOUR profile — GPA, field,
+              degree, budget.
+            </p>
+          </div>
+          <div class="feat">
+            <div class="feat-ico"><i class="fa-solid fa-robot"></i></div>
+            <h3 data-e="AI Advisor" data-a="مستشار ذكي">AI Advisor</h3>
+            <p
+              data-e="Context-aware chatbot that remembers your data and gives personalized guidance."
+              data-a="شات بوت ذكي يتذكر بياناتك ويقدم إرشادات مخصصة."
+            >
+              Context-aware chatbot that remembers your data and gives
+              personalized guidance.
+            </p>
+          </div>
+          <div class="feat">
+            <div class="feat-ico"><i class="fa-solid fa-code-compare"></i></div>
+            <h3 data-e="Compare & Save" data-a="قارن واحفظ">Compare & Save</h3>
+            <p
+              data-e="Bookmark programs and compare multiple side-by-side before deciding."
+              data-a="احفظ البرامج وقارن بينها جنباً إلى جنب قبل القرار."
+            >
+              Bookmark programs and compare multiple side-by-side before
+              deciding.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="pg-search" class="pg">
+        <div class="form-box">
+          <div class="pg-title">
+            <h2 data-e="Tell Us About Yourself" data-a="أخبرنا عن نفسك">
+              Tell Us About Yourself
+            </h2>
+            <p
+              data-e="All fields are used for smart matching"
+              data-a="جميع الحقول تُستخدم للمطابقة الذكية"
+            >
+              All fields are used for smart matching
+            </p>
+          </div>
+          <form onsubmit="doSearch(event)">
+            <div class="fg">
+              <div class="fi">
+                <label data-e="Field of Study *" data-a="مجال الدراسة *"
+                  >Field of Study *</label
+                >
+                <select id="f-field" required>
+                  <option value="all">Any Field</option>
+                  <option value="CS">Computer Science / AI</option>
+                  <option value="DS">Data Science / Analytics</option>
+                  <option value="ENG">Engineering</option>
+                  <option value="BUS">Business / MBA / Finance</option>
+                  <option value="MED">Medicine / Health</option>
+                  <option value="ART">Arts / Humanities</option>
+                  <option value="NRG">Renewable Energy</option>
+                </select>
+              </div>
+              <div class="fi">
+                <label
+                  data-e="Your Bachelor's Degree *"
+                  data-a="درجة البكالوريوس *"
+                  >Your Bachelor's Degree *</label
+                >
+                <select id="f-deg" required>
+                  <option value="BSc">BSc (Science)</option>
+                  <option value="BEng">BEng (Engineering)</option>
+                  <option value="BBA">BBA (Business)</option>
+                  <option value="BA">BA (Arts)</option>
+                  <option value="BTech">BTech (Technology)</option>
+                </select>
+              </div>
+              <div class="fi">
+                <label data-e="GPA (out of 4.0) *" data-a="المعدل (من 4.0) *"
+                  >GPA (out of 4.0) *</label
+                ><input
+                  type="number"
+                  id="f-gpa"
+                  step="0.1"
+                  min="0"
+                  max="4"
+                  placeholder="e.g. 3.4"
+                  required
+                /><span
+                  class="err-msg"
+                  id="gpa-err"
+                  data-e="GPA must be between 0.0 and 4.0"
+                  data-a="المعدل يجب أن يكون بين 0.0 و 4.0"
+                  >GPA must be between 0.0 and 4.0</span
+                >
+              </div>
+              <div class="fi">
+                <label data-e="Preferred Country *" data-a="الدولة المفضلة *"
+                  >Preferred Country *</label
+                >
+                <select id="f-country" required>
+                  <option value="any">Any Country</option>
+                  <option value="Germany">Germany</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="Canada">Canada</option>
+                  <option value="USA">USA</option>
+                  <option value="Saudi Arabia">Saudi Arabia</option>
+                  <option value="UAE">UAE</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Finland">Finland</option>
+                  <option value="Japan">Japan</option>
+                  <option value="South Korea">South Korea</option>
+                  <option value="Turkey">Turkey</option>
+                  <option value="China">China</option>
+                  <option value="Netherlands">Netherlands</option>
+                  <option value="Sweden">Sweden</option>
+                  <option value="Switzerland">Switzerland</option>
+                  <option value="France">France</option>
+                  <option value="New Zealand">New Zealand</option>
+                  <option value="Singapore">Singapore</option>
+                  <option value="Qatar">Qatar</option>
+                  <option value="Malaysia">Malaysia</option>
+                </select>
+              </div>
+              <div class="fi">
+                <label
+                  data-e="Annual Budget (USD) *"
+                  data-a="الميزانية السنوية (دولار) *"
+                  >Annual Budget (USD) *</label
+                >
+                <select id="f-budget" required>
+                  <option value="0">Free / Scholarship Only</option>
+                  <option value="5000">≤ $5,000</option>
+                  <option value="15000">≤ $15,000</option>
+                  <option value="30000">≤ $30,000</option>
+                  <option value="50000">≤ $50,000</option>
+                  <option value="999999">No Limit</option>
+                </select>
+              </div>
+              <div class="fi">
+                <label
+                  data-e="IELTS Score (if any)"
+                  data-a="درجة آيلتس (إن وجدت)"
+                  >IELTS Score (if any)</label
+                ><input
+                  type="number"
+                  id="f-ielts"
+                  step="0.5"
+                  min="0"
+                  max="9"
+                  placeholder="e.g. 7.0"
+                /><span
+                  class="err-msg"
+                  id="ielts-err"
+                  data-e="IELTS must be between 0 and 9"
+                  data-a="آيلتس يجب أن يكون بين 0 و 9"
+                  >IELTS must be between 0 and 9</span
+                >
+              </div>
+              <div class="fi full">
+                <label
+                  data-e="Your Interests (comma separated)"
+                  data-a="اهتماماتك (مفصولة بفاصلة)"
+                  >Your Interests (comma separated)</label
+                ><input
+                  type="text"
+                  id="f-interests"
+                  placeholder="AI, Robotics, Finance, Climate, Public Health..."
+                />
+              </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem">
+              <button type="submit" class="btn btn-p">
+                <i class="fa-solid fa-wand-magic-sparkles"></i
+                ><span
+                  data-e="Find My Best Matches"
+                  data-a="اعثر على أفضل تطابقاتي"
+                  >Find My Best Matches</span
+                >
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <section id="pg-results" class="pg">
+        <div class="cmp-bar" id="cmp-bar">
+          <div>
+            <strong><span id="cmp-count">0</span></strong>
+            <span
+              data-e="programs selected for comparison"
+              data-a="برامج محددة للمقارنة"
+              >programs selected for comparison</span
+            >
+          </div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap">
+            <button class="btn btn-out btn-sm" onclick="clearCompare()">
+              <i class="fa-solid fa-xmark"></i
+              ><span data-e="Clear" data-a="مسح">Clear</span></button
+            ><button class="btn btn-p btn-sm" onclick="openCompare()">
+              <i class="fa-solid fa-code-compare"></i
+              ><span data-e="Compare Now" data-a="قارن الآن">Compare Now</span>
+            </button>
+          </div>
+        </div>
+        <div class="res-head">
+          <div>
+            <h2 data-e="Your Matched Programs" data-a="برامجك المطابقة">
+              Your Matched Programs
+            </h2>
+            <p style="color: var(--mut)" id="res-count"></p>
+          </div>
+          <button class="btn btn-out btn-sm" onclick="go('search')">
+            <i class="fa-solid fa-sliders"></i
+            ><span data-e="Modify Search" data-a="تعديل البحث"
+              >Modify Search</span
+            >
+          </button>
+        </div>
+        <div class="loader" id="loader">
+          <div class="spinner"></div>
+          <p
+            data-e="Finding best matches for you..."
+            data-a="جاري البحث عن أفضل التطابقات..."
+          >
+            Finding best matches for you...
+          </p>
+        </div>
+        <div id="res-grid" class="res-grid"></div>
+      </section>
+      <section id="pg-saved" class="pg">
+        <div class="pg-title">
+          <h2 data-e="Saved Programs" data-a="البرامج المحفوظة">
+            Saved Programs
+          </h2>
+          <p data-e="Your bookmarked programs" data-a="برامجك المحفوظة">
+            Your bookmarked programs
+          </p>
+        </div>
+        <div id="saved-grid" class="res-grid"></div>
+        <div id="saved-empty" class="no-res" style="display: none">
+          <i class="fa-solid fa-bookmark"></i>
+          <h3 data-e="No saved programs yet" data-a="لا توجد برامج محفوظة">
+            No saved programs yet
+          </h3>
+          <p
+            style="color: var(--mut)"
+            data-e="Search and bookmark programs first"
+            data-a="ابحث واحفظ البرامج أولاً"
+          >
+            Search and bookmark programs first
+          </p>
+        </div>
+      </section>
+      <section id="pg-chat" class="pg">
+        <div class="chat-box">
+          <div class="chat-hd">
+            <div class="chat-av"><i class="fa-solid fa-robot"></i></div>
+            <div>
+              <h3 data-e="GradPath AI Advisor" data-a="مستشار جراد باث الذكي">
+                GradPath AI Advisor
+              </h3>
+              <p
+                style="font-size: 0.8rem; opacity: 0.85"
+                data-e="Online • Remembers your profile"
+                data-a="متصل • يتذكر ملفك"
+              >
+                Online • Remembers your profile
+              </p>
+            </div>
+          </div>
+          <div class="chat-msgs" id="chat-msgs"></div>
+          <form class="chat-in" onsubmit="sendMsg(event)">
+            <input
+              type="text"
+              id="chat-inp"
+              placeholder="Ask anything..."
+              autocomplete="off"
+              required
+            /><button type="submit" aria-label="Send">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <div class="modal" id="cmp-modal">
+      <div class="modal-box">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            gap: 1rem;
+          "
+        >
+          <h3 data-e="Side-by-Side Comparison" data-a="مقارنة جنباً إلى جنب">
+            Side-by-Side Comparison
+          </h3>
+          <button class="btn btn-out btn-sm" onclick="closeModal('cmp-modal')">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div id="cmp-content"></div>
+      </div>
+    </div>
+    <div class="toast" id="toast">
+      <i class="fa-solid fa-circle-check" style="color: var(--ok)"></i
+      ><span id="toast-msg"></span>
+    </div>
+    <footer>
+      <div class="foot-inner">
+        <div class="foot-col">
+          <h4>GradPath AI</h4>
+          <p
+            data-e="Smart Master's program discovery platform for students worldwide."
+            data-a="منصة ذكية لاكتشاف برامج الماجستير للطلاب حول العالم."
+          >
+            Smart Master's program discovery platform for students worldwide.
+          </p>
+        </div>
+        <div class="foot-col">
+          <h4 data-e="Quick Links" data-a="روابط سريعة">Quick Links</h4>
+          <a onclick="go('home')" data-e="Home" data-a="الرئيسية">Home</a
+          ><a onclick="go('search')" data-e="Search" data-a="البحث">Search</a
+          ><a onclick="go('chat')" data-e="AI Advisor" data-a="المساعد الذكي"
+            >AI Advisor</a
+          >
+        </div>
+        <div class="foot-col">
+          <h4 data-e="Top Destinations" data-a="أفضل الوجهات">
+            Top Destinations
+          </h4>
+          <a>Germany</a><a>UK</a><a>Canada</a><a>USA</a><a>Japan</a
+          ><a>Turkey</a>
+        </div>
+        <div class="foot-col">
+          <h4 data-e="Contact" data-a="تواصل">Contact</h4>
+          <p>info@gradpath.ai</p>
+          <p data-e="Built with ❤️ for students" data-a="صُنع بـ ❤️ للطلاب">
+            Built with ❤️ for students
+          </p>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        &copy; 2025 GradPath AI. All rights reserved.
+      </div>
+    </footer>
+    <script>
+      const DB = [
+        {
+          id: 1,
+          ne: "MSc Artificial Intelligence",
+          na: "ماجستير الذكاء الاصطناعي",
+          ue: "TU Munich",
+          ua: "جامعة ميونخ التقنية",
+          co: "Germany",
+          fi: "CS",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.0,
+          ielts: 6.5,
+          tui: 0,
+          dur: "2 Years",
+          re: "BSc/BEng in CS, IELTS 6.5+, Letter of Motivation",
+          ra: "بكالوريوس حاسب، آيلتس 6.5+، خطاب تحفيزي",
+          tags: ["ai", "machine learning", "robotics", "deep learning"],
+          url: "https://www.tum.de",
+        },
+        {
+          id: 2,
+          ne: "MSc Computer Science (Full Fellowship)",
+          na: "ماجستير علوم الحاسب (منحة كاملة)",
+          ue: "KAUST",
+          ua: "جامعة الملك عبدالله",
+          co: "Saudi Arabia",
+          fi: "CS",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.3,
+          ielts: 6.5,
+          tui: 0,
+          dur: "2 Years",
+          re: "STEM Bachelor, GPA 3.3+, IELTS 6.5+, 3 Recommendations, SOP",
+          ra: "بكالوريوس علوم، معدل 3.3+، آيلتس 6.5+، 3 خطابات توصية",
+          tags: ["ai", "research", "hpc", "scholarship"],
+          url: "https://www.kaust.edu.sa",
+        },
+        {
+          id: 3,
+          ne: "MSc Data Science & Analytics",
+          na: "ماجستير علم البيانات",
+          ue: "University of Toronto",
+          ua: "جامعة تورنتو",
+          co: "Canada",
+          fi: "DS",
+          deg: ["BSc", "BEng", "BTech", "BBA"],
+          gpa: 3.2,
+          ielts: 7.0,
+          tui: 25000,
+          dur: "1.5 Years",
+          re: "BSc in CS/Math/Stats, IELTS 7.0+, GRE recommended",
+          ra: "بكالوريوس حاسب/رياضيات، آيلتس 7.0+، GRE مفضل",
+          tags: ["data", "analytics", "ml", "python", "big data"],
+          url: "https://www.utoronto.ca",
+        },
+        {
+          id: 4,
+          ne: "MBA - Business Administration",
+          na: "ماجستير إدارة الأعمال",
+          ue: "Harvard Business School",
+          ua: "كلية هارفارد للأعمال",
+          co: "USA",
+          fi: "BUS",
+          deg: ["BSc", "BEng", "BBA", "BA", "BTech"],
+          gpa: 3.5,
+          ielts: 7.5,
+          tui: 73000,
+          dur: "2 Years",
+          re: "Bachelor any field, GMAT 700+, 2+ years work exp, TOEFL 109+",
+          ra: "بكالوريوس أي مجال، GMAT 700+، خبرة سنتين+",
+          tags: ["mba", "leadership", "finance", "strategy"],
+          url: "https://www.hbs.edu",
+        },
+        {
+          id: 5,
+          ne: "MSc Mechanical Engineering",
+          na: "ماجستير الهندسة الميكانيكية",
+          ue: "Imperial College London",
+          ua: "إمبريال كوليدج لندن",
+          co: "UK",
+          fi: "ENG",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.3,
+          ielts: 6.5,
+          tui: 35000,
+          dur: "1 Year",
+          re: "BEng Mechanical, IELTS 6.5+, SOP, 2 References",
+          ra: "بكالوريوس هندسة ميكانيكية، آيلتس 6.5+، بيان الغرض",
+          tags: ["mechanical", "design", "thermodynamics"],
+          url: "https://www.imperial.ac.uk",
+        },
+        {
+          id: 6,
+          ne: "MSc Public Health",
+          na: "ماجستير الصحة العامة",
+          ue: "University of Melbourne",
+          ua: "جامعة ملبورن",
+          co: "Australia",
+          fi: "MED",
+          deg: ["BSc", "BA"],
+          gpa: 3.0,
+          ielts: 6.5,
+          tui: 28000,
+          dur: "2 Years",
+          re: "BSc in Health/Medicine, IELTS 6.5+, Research experience preferred",
+          ra: "بكالوريوس صحة/طب، آيلتس 6.5+، خبرة بحثية مفضلة",
+          tags: ["health", "epidemiology", "public policy"],
+          url: "https://www.unimelb.edu.au",
+        },
+        {
+          id: 7,
+          ne: "MA Digital Humanities",
+          na: "ماجستير الإنسانيات الرقمية",
+          ue: "University of Edinburgh",
+          ua: "جامعة إدنبرة",
+          co: "UK",
+          fi: "ART",
+          deg: ["BA", "BSc", "BBA"],
+          gpa: 3.0,
+          ielts: 6.5,
+          tui: 22000,
+          dur: "1 Year",
+          re: "BA in Humanities, IELTS 6.5+, Writing sample",
+          ra: "بكالوريوس إنسانيات، آيلتس 6.5+، عينة كتابة",
+          tags: ["digital", "culture", "media"],
+          url: "https://www.ed.ac.uk",
+        },
+        {
+          id: 8,
+          ne: "MSc Business Analytics (Full Scholarship)",
+          na: "ماجستير تحليلات الأعمال (منحة كاملة)",
+          ue: "MBZUAI",
+          ua: "جامعة محمد بن زايد",
+          co: "UAE",
+          fi: "DS",
+          deg: ["BSc", "BEng", "BTech", "BBA"],
+          gpa: 3.2,
+          ielts: 6.5,
+          tui: 0,
+          dur: "2 Years",
+          re: "STEM/Business Bachelor, GPA 3.2+, IELTS 6.5+, Full scholarship + stipend",
+          ra: "بكالوريوس علوم/أعمال، معدل 3.2+، منحة كاملة + راتب",
+          tags: ["analytics", "ai", "business", "scholarship"],
+          url: "https://mbzuai.ac.ae",
+        },
+        {
+          id: 9,
+          ne: "MSc Renewable Energy Engineering",
+          na: "ماجستير هندسة الطاقة المتجددة",
+          ue: "RWTH Aachen",
+          ua: "جامعة آخن التقنية",
+          co: "Germany",
+          fi: "NRG",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.0,
+          ielts: 6.5,
+          tui: 500,
+          dur: "2 Years",
+          re: "BEng Engineering/Physics, IELTS 6.5+, APS Certificate",
+          ra: "بكالوريوس هندسة/فيزياء، آيلتس 6.5+، شهادة APS",
+          tags: ["solar", "wind", "climate", "sustainability", "green"],
+          url: "https://www.rwth-aachen.de",
+        },
+        {
+          id: 10,
+          ne: "MSc Finance",
+          na: "ماجستير التمويل",
+          ue: "London School of Economics",
+          ua: "كلية لندن للاقتصاد",
+          co: "UK",
+          fi: "BUS",
+          deg: ["BSc", "BBA", "BEng"],
+          gpa: 3.5,
+          ielts: 7.0,
+          tui: 40000,
+          dur: "1 Year",
+          re: "BSc Finance/Economics, GPA 3.5+, GMAT/GRE, IELTS 7.0+",
+          ra: "بكالوريوس تمويل/اقتصاد، معدل 3.5+، GMAT، آيلتس 7.0+",
+          tags: ["finance", "investment", "banking"],
+          url: "https://www.lse.ac.uk",
+        },
+        {
+          id: 11,
+          ne: "MSc Robotics & Autonomous Systems",
+          na: "ماجستير الروبوتات والأنظمة المستقلة",
+          ue: "TU Delft",
+          ua: "جامعة دلفت التقنية",
+          co: "Netherlands",
+          fi: "CS",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.2,
+          ielts: 6.5,
+          tui: 2200,
+          dur: "2 Years",
+          re: "BSc/BEng in CS/EE, IELTS 6.5+, Programming portfolio",
+          ra: "بكالوريوس حاسب/كهرباء، آيلتس 6.5+، ملف برمجة",
+          tags: ["robotics", "autonomous", "ai", "control"],
+          url: "https://www.tudelft.nl",
+        },
+        {
+          id: 12,
+          ne: "MSc Biomedical Engineering",
+          na: "ماجستير الهندسة الطبية الحيوية",
+          ue: "University of Toronto",
+          ua: "جامعة تورنتو",
+          co: "Canada",
+          fi: "MED",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.3,
+          ielts: 7.0,
+          tui: 30000,
+          dur: "2 Years",
+          re: "BEng/BSc Biomedical, IELTS 7.0+, Research statement",
+          ra: "بكالوريوس هندسة طبية، آيلتس 7.0+، بيان بحثي",
+          tags: ["biomedical", "health", "devices", "imaging"],
+          url: "https://www.utoronto.ca",
+        },
+        {
+          id: 13,
+          ne: "MSc Machine Learning",
+          na: "ماجستير تعلم الآلة",
+          ue: "UCL London",
+          ua: "كلية لندن الجامعية",
+          co: "UK",
+          fi: "CS",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.4,
+          ielts: 7.0,
+          tui: 38000,
+          dur: "1 Year",
+          re: "BSc CS/Math/Physics, GPA 3.4+, IELTS 7.0+, Strong math",
+          ra: "بكالوريوس حاسب/رياضيات، معدل 3.4+، آيلتس 7.0+",
+          tags: ["ml", "deep learning", "nlp", "computer vision"],
+          url: "https://www.ucl.ac.uk",
+        },
+        {
+          id: 14,
+          ne: "MBA (Scholarship Available)",
+          na: "ماجستير إدارة أعمال (منحة متاحة)",
+          ue: "INSEAD",
+          ua: "إنسياد",
+          co: "UAE",
+          fi: "BUS",
+          deg: ["BSc", "BEng", "BBA", "BA", "BTech"],
+          gpa: 3.2,
+          ielts: 7.0,
+          tui: 45000,
+          dur: "1 Year",
+          re: "Bachelor any field, GMAT 650+, 3+ years exp, 2+ languages",
+          ra: "بكالوريوس أي مجال، GMAT 650+، خبرة 3+ سنوات",
+          tags: ["mba", "leadership", "global", "consulting"],
+          url: "https://www.insead.edu",
+        },
+        {
+          id: 15,
+          ne: "MSc Environmental Science",
+          na: "ماجستير العلوم البيئية",
+          ue: "University of Helsinki",
+          ua: "جامعة هلسنكي",
+          co: "Finland",
+          fi: "NRG",
+          deg: ["BSc", "BEng", "BA"],
+          gpa: 2.8,
+          ielts: 6.5,
+          tui: 0,
+          dur: "2 Years",
+          re: "BSc Environmental/Biology, IELTS 6.5+, Motivation letter",
+          ra: "بكالوريوس بيئة/أحياء، آيلتس 6.5+، خطاب تحفيزي",
+          tags: ["climate", "environment", "sustainability", "ecology"],
+          url: "https://www.helsinki.fi",
+        },
+        {
+          id: 16,
+          ne: "MSc Cybersecurity",
+          na: "ماجستير الأمن السيبراني",
+          ue: "Georgia Tech",
+          ua: "معهد جورجيا للتكنولوجيا",
+          co: "USA",
+          fi: "CS",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.3,
+          ielts: 7.0,
+          tui: 20000,
+          dur: "2 Years",
+          re: "BSc CS/IT, GPA 3.3+, IELTS 7.0+, Programming experience",
+          ra: "بكالوريوس حاسب/تقنية، معدل 3.3+، آيلتس 7.0+",
+          tags: ["cybersecurity", "network", "encryption", "hacking"],
+          url: "https://www.gatech.edu",
+        },
+        {
+          id: 17,
+          ne: "MSc International Business",
+          na: "ماجستير الأعمال الدولية",
+          ue: "University of Sydney",
+          ua: "جامعة سيدني",
+          co: "Australia",
+          fi: "BUS",
+          deg: ["BSc", "BBA", "BA", "BEng"],
+          gpa: 3.0,
+          ielts: 6.5,
+          tui: 32000,
+          dur: "1.5 Years",
+          re: "Bachelor any field, IELTS 6.5+, No work exp required",
+          ra: "بكالوريوس أي مجال، آيلتس 6.5+، لا تحتاج خبرة",
+          tags: ["international", "trade", "marketing", "global"],
+          url: "https://www.sydney.edu.au",
+        },
+        {
+          id: 18,
+          ne: "MSc Data Engineering",
+          na: "ماجستير هندسة البيانات",
+          ue: "TU Berlin",
+          ua: "جامعة برلين التقنية",
+          co: "Germany",
+          fi: "DS",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.0,
+          ielts: 6.5,
+          tui: 0,
+          dur: "2 Years",
+          re: "BSc CS/IT/Math, IELTS 6.5+, Python/SQL, APS Certificate",
+          ra: "بكالوريوس حاسب/رياضيات، آيلتس 6.5+، Python/SQL",
+          tags: ["data", "engineering", "cloud", "big data", "etl"],
+          url: "https://www.tu.berlin",
+        },
+        {
+          id: 19,
+          ne: "MEXT Scholarship - MSc Engineering",
+          na: "منحة مكست - ماجستير هندسة",
+          ue: "University of Tokyo",
+          ua: "جامعة طوكيو",
+          co: "Japan",
+          fi: "ENG",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.0,
+          ielts: 6.0,
+          tui: 0,
+          dur: "2 Years",
+          re: "Full MEXT Scholarship: Tuition+¥143,000/mo+flights, GPA 3.0+, Research plan",
+          ra: "منحة مكست كاملة: الرسوم + 143,000 ين/شهر + طيران",
+          tags: ["mext", "scholarship", "research", "japan"],
+          url: "https://www.studyinjapan.go.jp",
+        },
+        {
+          id: 20,
+          ne: "MSc Computer Science (MEXT)",
+          na: "ماجستير علوم الحاسب (مكست)",
+          ue: "Kyoto University",
+          ua: "جامعة كيوتو",
+          co: "Japan",
+          fi: "CS",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.0,
+          ielts: 6.0,
+          tui: 0,
+          dur: "2 Years",
+          re: "MEXT Fully Funded, GPA 3.0+, Japanese or English program, Embassy nomination",
+          ra: "منحة مكست ممولة بالكامل، معدل 3.0+، ترشيح السفارة",
+          tags: ["ai", "research", "mext", "scholarship"],
+          url: "https://www.kyoto-u.ac.jp",
+        },
+        {
+          id: 21,
+          ne: "Global Korea Scholarship (GKS) - MSc",
+          na: "منحة كوريا العالمية - ماجستير",
+          ue: "Seoul National University",
+          ua: "جامعة سيول الوطنية",
+          co: "South Korea",
+          fi: "CS",
+          deg: ["BSc", "BEng", "BTech", "BBA"],
+          gpa: 2.6,
+          ielts: 5.5,
+          tui: 0,
+          dur: "2 Years + 1 Lang",
+          re: "GKS Full: Tuition+₩900k/mo+flights+Korean course, GPA 2.64+ (80%)",
+          ra: "منحة GKS كاملة: الرسوم + 900 ألف وون/شهر + سنة لغة كورية",
+          tags: ["gks", "korea", "scholarship", "research"],
+          url: "https://www.studyinkorea.go.kr",
+        },
+        {
+          id: 22,
+          ne: "KAIST Scholarship - MSc Engineering",
+          na: "منحة كايست - ماجستير هندسة",
+          ue: "KAIST",
+          ua: "معهد كايست",
+          co: "South Korea",
+          fi: "ENG",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.0,
+          ielts: 6.5,
+          tui: 0,
+          dur: "2 Years",
+          re: "Full tuition waiver + ₩350,000/mo stipend, GPA 3.0+, English programs",
+          ra: "إعفاء كامل من الرسوم + 350,000 وون/شهر، معدل 3.0+",
+          tags: ["engineering", "research", "korea", "scholarship"],
+          url: "https://www.kaist.ac.kr",
+        },
+        {
+          id: 23,
+          ne: "Türkiye Bursları - MSc",
+          na: "منحة تركيا بورسلاري - ماجستير",
+          ue: "Boğaziçi University",
+          ua: "جامعة بوغازيتشي",
+          co: "Turkey",
+          fi: "BUS",
+          deg: ["BSc", "BBA", "BA", "BEng"],
+          gpa: 2.8,
+          ielts: 0,
+          tui: 0,
+          dur: "2 Years + 1 Lang",
+          re: "Full scholarship: Tuition+₺4,500/mo+housing+flights+Turkish language year",
+          ra: "منحة كاملة: الرسوم + 4,500 ليرة/شهر + سكن + طيران + سنة لغة تركية",
+          tags: ["turkey", "scholarship", "no ielts", "housing"],
+          url: "https://www.turkiyeburslari.gov.tr",
+        },
+        {
+          id: 24,
+          ne: "Türkiye Bursları - MSc Engineering",
+          na: "منحة تركيا - ماجستير هندسة",
+          ue: "Istanbul Technical University",
+          ua: "جامعة إسطنبول التقنية",
+          co: "Turkey",
+          fi: "ENG",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 2.8,
+          ielts: 0,
+          tui: 0,
+          dur: "2 Years",
+          re: "Türkiye Scholarship: All expenses + stipend, No IELTS needed, Age under 30",
+          ra: "منحة تركيا: جميع المصاريف + راتب، بدون آيلتس، تحت 30 سنة",
+          tags: ["turkey", "engineering", "scholarship", "no ielts"],
+          url: "https://www.itu.edu.tr",
+        },
+        {
+          id: 25,
+          ne: "CSC Scholarship - MSc Computer Science",
+          na: "منحة CSC - ماجستير علوم حاسب",
+          ue: "Tsinghua University",
+          ua: "جامعة تسينغهوا",
+          co: "China",
+          fi: "CS",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.0,
+          ielts: 6.0,
+          tui: 0,
+          dur: "2-3 Years",
+          re: "Chinese Govt Scholarship: Tuition+¥3,000/mo+housing+medical, GPA 3.0+",
+          ra: "منحة الحكومة الصينية: الرسوم + 3,000 يوان/شهر + سكن + طبي",
+          tags: ["csc", "china", "scholarship", "ai"],
+          url: "https://www.campuschina.org",
+        },
+        {
+          id: 26,
+          ne: "CSC Scholarship - MSc Engineering",
+          na: "منحة CSC - ماجستير هندسة",
+          ue: "Peking University",
+          ua: "جامعة بكين",
+          co: "China",
+          fi: "ENG",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.0,
+          ielts: 6.0,
+          tui: 0,
+          dur: "2-3 Years",
+          re: "CSC Full Scholarship, Research-based, Chinese Embassy nomination",
+          ra: "منحة CSC كاملة، أبحاث، ترشيح السفارة الصينية",
+          tags: ["csc", "china", "engineering", "research"],
+          url: "https://english.pku.edu.cn",
+        },
+        {
+          id: 27,
+          ne: "Holland Scholarship - MSc Data Science",
+          na: "منحة هولندا - ماجستير علم البيانات",
+          ue: "University of Amsterdam",
+          ua: "جامعة أمستردام",
+          co: "Netherlands",
+          fi: "DS",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.0,
+          ielts: 6.5,
+          tui: 15000,
+          dur: "2 Years",
+          re: "€5,000 Holland Scholarship + tuition, BSc CS/Math, IELTS 6.5+",
+          ra: "منحة هولندا 5,000€ + الرسوم، بكالوريوس حاسب/رياضيات",
+          tags: ["holland", "scholarship", "data", "nl"],
+          url: "https://www.uva.nl",
+        },
+        {
+          id: 28,
+          ne: "Swedish Institute Scholarship - MSc",
+          na: "منحة المعهد السويدي - ماجستير",
+          ue: "KTH Royal Institute",
+          ua: "معهد KTH الملكي",
+          co: "Sweden",
+          fi: "ENG",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.2,
+          ielts: 6.5,
+          tui: 0,
+          dur: "2 Years",
+          re: "SI Scholarship: Full tuition + SEK 12,000/mo + travel + insurance",
+          ra: "منحة SI: الرسوم كاملة + 12,000 كرونة/شهر + سفر + تأمين",
+          tags: ["sweden", "scholarship", "engineering", "si"],
+          url: "https://www.kth.se",
+        },
+        {
+          id: 29,
+          ne: "Swiss Government Excellence - MSc",
+          na: "منحة التميز السويسرية - ماجستير",
+          ue: "ETH Zurich",
+          ua: "ETH زيوريخ",
+          co: "Switzerland",
+          fi: "CS",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.5,
+          ielts: 7.0,
+          tui: 1500,
+          dur: "2 Years",
+          re: "Swiss Excellence Scholarship: CHF 1,920/mo + tuition + insurance + flights",
+          ra: "منحة التميز السويسرية: 1,920 فرنك/شهر + الرسوم + تأمين",
+          tags: ["swiss", "scholarship", "research", "ai"],
+          url: "https://ethz.ch",
+        },
+        {
+          id: 30,
+          ne: "Eiffel Excellence Scholarship - MSc",
+          na: "منحة إيفل للتميز - ماجستير",
+          ue: "Sorbonne University",
+          ua: "جامعة السوربون",
+          co: "France",
+          fi: "ENG",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.2,
+          ielts: 6.5,
+          tui: 500,
+          dur: "2 Years",
+          re: "Eiffel Scholarship: €1,181/mo + flights + insurance + cultural activities",
+          ra: "منحة إيفل: 1,181€/شهر + طيران + تأمين + أنشطة ثقافية",
+          tags: ["france", "eiffel", "scholarship", "engineering"],
+          url: "https://www.sorbonne-universite.fr",
+        },
+        {
+          id: 31,
+          ne: "MSc Finance (Eiffel Scholarship)",
+          na: "ماجستير التمويل (منحة إيفل)",
+          ue: "HEC Paris",
+          ua: "HEC باريس",
+          co: "France",
+          fi: "BUS",
+          deg: ["BSc", "BBA", "BEng"],
+          gpa: 3.3,
+          ielts: 7.0,
+          tui: 0,
+          dur: "1.5 Years",
+          re: "Eiffel Scholarship covers everything, GMAT 650+, Age under 25",
+          ra: "منحة إيفل تغطي كل شيء، GMAT 650+، تحت 25 سنة",
+          tags: ["france", "finance", "mba", "scholarship"],
+          url: "https://www.hec.edu",
+        },
+        {
+          id: 32,
+          ne: "Manaaki NZ Scholarship - MSc",
+          na: "منحة ماناكي نيوزيلندا - ماجستير",
+          ue: "University of Auckland",
+          ua: "جامعة أوكلاند",
+          co: "New Zealand",
+          fi: "MED",
+          deg: ["BSc", "BA"],
+          gpa: 3.0,
+          ielts: 6.5,
+          tui: 0,
+          dur: "2 Years",
+          re: "Full tuition+NZD 491/wk+flights+insurance+settling, Developing countries",
+          ra: "رسوم كاملة + 491 د.ن/أسبوع + طيران + تأمين + استقرار",
+          tags: ["nz", "scholarship", "health", "manaaki"],
+          url: "https://www.auckland.ac.nz",
+        },
+        {
+          id: 33,
+          ne: "SINGA Award - MSc/PhD",
+          na: "منحة SINGA - ماجستير/دكتوراه",
+          ue: "National University of Singapore",
+          ua: "جامعة سنغافورة الوطنية",
+          co: "Singapore",
+          fi: "CS",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.2,
+          ielts: 6.5,
+          tui: 0,
+          dur: "2-4 Years",
+          re: "SINGA: Full tuition+SGD 2,700/mo+flights+settling, No GRE needed",
+          ra: "منحة SINGA: الرسوم كاملة + 2,700 د.س/شهر + طيران",
+          tags: ["singapore", "singa", "research", "ai"],
+          url: "https://www.singa.a-star.edu.sg",
+        },
+        {
+          id: 34,
+          ne: "Qatar University Scholarship - MSc",
+          na: "منحة جامعة قطر - ماجستير",
+          ue: "Qatar University",
+          ua: "جامعة قطر",
+          co: "Qatar",
+          fi: "BUS",
+          deg: ["BSc", "BBA", "BA", "BEng"],
+          gpa: 3.0,
+          ielts: 5.5,
+          tui: 0,
+          dur: "2 Years",
+          re: "Full tuition + housing + flights + textbooks, All nationalities",
+          ra: "رسوم كاملة + سكن + طيران + كتب، جميع الجنسيات",
+          tags: ["qatar", "scholarship", "business", "housing"],
+          url: "https://www.qu.edu.qa",
+        },
+        {
+          id: 35,
+          ne: "MTCP Scholarship - MSc",
+          na: "منحة MTCP - ماجستير",
+          ue: "Universiti Malaya",
+          ua: "جامعة ملايا",
+          co: "Malaysia",
+          fi: "ENG",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 2.8,
+          ielts: 6.0,
+          tui: 0,
+          dur: "1-2 Years",
+          re: "Full tuition + RM 3,500/mo + flights + medical, Developing countries",
+          ra: "رسوم كاملة + 3,500 ر.م/شهر + طيران + طبي، للدول النامية",
+          tags: ["malaysia", "mtcp", "scholarship", "engineering"],
+          url: "https://mtcp.kln.gov.my",
+        },
+        {
+          id: 36,
+          ne: "Chevening Scholarship - MSc",
+          na: "منحة تشيفنينغ - ماجستير",
+          ue: "University of Oxford",
+          ua: "جامعة أكسفورد",
+          co: "UK",
+          fi: "BUS",
+          deg: ["BSc", "BBA", "BA", "BEng", "BTech"],
+          gpa: 3.0,
+          ielts: 6.5,
+          tui: 0,
+          dur: "1 Year",
+          re: "Chevening Full: Tuition + £1,300/mo + flights + visa, 2 yrs work exp required",
+          ra: "منحة تشيفنينغ كاملة: رسوم + 1,300£/شهر + طيران + تأشيرة",
+          tags: ["chevening", "uk", "scholarship", "leadership"],
+          url: "https://www.chevening.org",
+        },
+        {
+          id: 37,
+          ne: "DAAD EPOS Scholarship - MSc",
+          na: "منحة DAAD EPOS - ماجستير",
+          ue: "University of Bonn",
+          ua: "جامعة بون",
+          co: "Germany",
+          fi: "NRG",
+          deg: ["BSc", "BEng", "BTech", "BA"],
+          gpa: 2.8,
+          ielts: 6.0,
+          tui: 0,
+          dur: "2 Years",
+          re: "DAAD EPOS: €934/mo + health + travel + tuition, 2 yrs work exp",
+          ra: "منحة DAAD: 934€/شهر + صحي + سفر + رسوم، خبرة سنتين",
+          tags: ["daad", "germany", "scholarship", "development"],
+          url: "https://www.daad.de",
+        },
+        {
+          id: 38,
+          ne: "Fulbright Foreign Student - MSc",
+          na: "منحة فولبرايت - ماجستير",
+          ue: "MIT",
+          ua: "معهد ماساتشوستس",
+          co: "USA",
+          fi: "CS",
+          deg: ["BSc", "BEng", "BTech"],
+          gpa: 3.5,
+          ielts: 7.0,
+          tui: 0,
+          dur: "2 Years",
+          re: "Fulbright Full: Tuition + living + health + travel, Via US Embassy",
+          ra: "منحة فولبرايت كاملة: رسوم + معيشة + صحي + سفر، عبر السفارة",
+          tags: ["fulbright", "usa", "scholarship", "prestigious"],
+          url: "https://foreign.fulbrightonline.org",
+        },
+        {
+          id: 39,
+          ne: "Vanier Canada Scholarship - MSc/PhD",
+          na: "منحة فانير كندا - دراسات عليا",
+          ue: "McGill University",
+          ua: "جامعة ماكغيل",
+          co: "Canada",
+          fi: "MED",
+          deg: ["BSc", "BEng", "BA"],
+          gpa: 3.5,
+          ielts: 7.0,
+          tui: 0,
+          dur: "2-3 Years",
+          re: "Vanier: CAD $50,000/yr for 3 years, Top 5% students, University nomination",
+          ra: "منحة فانير: 50,000 د.ك/سنة لـ 3 سنوات، أعلى 5%",
+          tags: ["vanier", "canada", "scholarship", "research"],
+          url: "https://vanier.gc.ca",
+        },
+        {
+          id: 40,
+          ne: "Australia Awards - MSc",
+          na: "منح أستراليا - ماجستير",
+          ue: "Australian National University",
+          ua: "الجامعة الوطنية الأسترالية",
+          co: "Australia",
+          fi: "BUS",
+          deg: ["BSc", "BBA", "BA", "BEng"],
+          gpa: 3.0,
+          ielts: 6.5,
+          tui: 0,
+          dur: "2 Years",
+          re: "Australia Awards: Full tuition + AUD 3,000/mo + flights + health + settling",
+          ra: "منح أستراليا: رسوم كاملة + 3,000 د.أ/شهر + طيران + صحي",
+          tags: ["australia", "awards", "scholarship", "leadership"],
+          url: "https://www.dfat.gov.au",
+        },
+      ];
+      const SCHOLARSHIP_APPLICATION_LINKS = {
+        2: { url: "https://apply.kaust.edu.sa/", direct: true },
+        8: {
+          url: "https://mbzuai.ac.ae/study/admission-process/",
+          direct: false,
+        },
+        14: {
+          url: "https://www.insead.edu/master-programmes/master-business-administration",
+          direct: false,
+        },
+        19: {
+          url: "https://www.studyinjapan.go.jp/en/planning/scholarships/",
+          direct: false,
+        },
+        20: {
+          url: "https://www.studyinjapan.go.jp/en/planning/scholarships/",
+          direct: false,
+        },
+        21: {
+          url: "https://www.studyinkorea.go.kr/en/scholarship/Gks1Notice.do",
+          direct: false,
+        },
+        22: {
+          url: "https://admission.kaist.ac.kr/intl-graduate/",
+          direct: true,
+        },
+        23: { url: "https://tbbs.turkiyeburslari.gov.tr/", direct: true },
+        24: { url: "https://tbbs.turkiyeburslari.gov.tr/", direct: true },
+        25: { url: "https://studyinchina.csc.edu.cn/#/login", direct: true },
+        26: { url: "https://studyinchina.csc.edu.cn/#/login", direct: true },
+        27: {
+          url: "https://www.studyinnl.org/finances/nl-scholarship",
+          direct: false,
+        },
+        28: { url: "https://apply.si.se/", direct: true },
+        29: {
+          url: "https://www.sbfi.admin.ch/sbfi/en/home/education/scholarships/swiss-government-excellence-scholarships.html",
+          direct: false,
+        },
+        30: {
+          url: "https://www.campusfrance.org/en/eiffel-scholarship-program",
+          direct: false,
+        },
+        31: {
+          url: "https://www.campusfrance.org/en/eiffel-scholarship-program",
+          direct: false,
+        },
+        32: { url: "https://www.nzscholarships.govt.nz/", direct: false },
+        33: {
+          url: "https://www.a-star.edu.sg/Scholarships/for-graduate-studies/singa-scholarship",
+          direct: true,
+        },
+        34: {
+          url: "https://www.qu.edu.qa/en-us/students/admission/graduate/Pages/default.aspx",
+          direct: true,
+        },
+        35: { url: "https://mtcp.kln.gov.my/scholarship", direct: false },
+        36: {
+          url: "https://www.chevening.org/scholarships/application/",
+          direct: false,
+        },
+        37: {
+          url: "https://www.daad.de/en/study-and-research-in-germany/scholarships/",
+          direct: false,
+        },
+        38: { url: "https://foreign.fulbrightonline.org/apply", direct: false },
+        39: {
+          url: "https://vanier.gc.ca/en/nomination_process-processus_de_mise_en_candidature.html",
+          direct: false,
+        },
+        40: { url: "https://oasis.dfat.gov.au/", direct: true },
+      };
+      function getProgramDestination(p) {
+        return SCHOLARSHIP_APPLICATION_LINKS[p.id]?.url || p.url;
+      }
+      function getProgramButtonLabel(p, short = false) {
+        const a = SCHOLARSHIP_APPLICATION_LINKS[p.id];
+        if (a) {
+          if (a.direct)
+            return lang === "en"
+              ? '<i class="fa-solid fa-paper-plane"></i> Apply Now'
+              : '<i class="fa-solid fa-paper-plane"></i> قدّم الآن';
+          return lang === "en"
+            ? '<i class="fa-solid fa-list-check"></i> Application Steps'
+            : '<i class="fa-solid fa-list-check"></i> خطوات التقديم';
+        }
+        if (lang === "en")
+          return short
+            ? '<i class="fa-solid fa-arrow-up-right-from-square"></i> Visit'
+            : '<i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site';
+        return short
+          ? '<i class="fa-solid fa-arrow-up-right-from-square"></i> زيارة'
+          : '<i class="fa-solid fa-arrow-up-right-from-square"></i> زيارة الموقع';
+      }
+      function getProgramTooltip(p) {
+        const a = SCHOLARSHIP_APPLICATION_LINKS[p.id];
+        if (a) {
+          if (a.direct)
+            return lang === "en"
+              ? "Opens official direct application portal"
+              : "يفتح بوابة التقديم الرسمية المباشرة";
+          return lang === "en"
+            ? "Opens official scholarship application guidelines & instructions"
+            : "يفتح دليل وإرشادات التقديم الرسمية للمنحة";
+        }
+        return lang === "en"
+          ? "Opens official university website"
+          : "يفتح الموقع الرسمي للجامعة";
+      }
+      let lang = localStorage.getItem("gp_lang") || "en";
+      let theme = localStorage.getItem("gp_theme") || "light";
+      let formData = JSON.parse(localStorage.getItem("gp_form") || "{}");
+      let saved = JSON.parse(localStorage.getItem("gp_saved") || "[]");
+      let compareList = [];
+      let chatHistory = [];
+      function toggleMenu() {
+        const n = document.getElementById("navLinks");
+        if (!n) return;
+        n.classList.toggle("open");
+        const i = document.getElementById("menu-ico");
+        if (i)
+          i.className = n.classList.contains("open")
+            ? "fa-solid fa-xmark"
+            : "fa-solid fa-bars";
+      }
+      function closeMenu() {
+        const n = document.getElementById("navLinks");
+        if (n) n.classList.remove("open");
+        const i = document.getElementById("menu-ico");
+        if (i) i.className = "fa-solid fa-bars";
+      }
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 880) closeMenu();
+      });
+      function go(id, el) {
+        closeMenu();
+        document
+          .querySelectorAll(".pg")
+          .forEach((p) => p.classList.remove("active"));
+        document.getElementById("pg-" + id).classList.add("active");
+        document
+          .querySelectorAll(".nl")
+          .forEach((n) => n.classList.remove("active"));
+        if (el) el.classList.add("active");
+        if (id === "saved") renderSaved();
+        if (id === "chat" && !chatHistory.length) initChat();
+        window.scrollTo(0, 0);
+      }
+      function flipLang() {
+        lang = lang === "en" ? "ar" : "en";
+        localStorage.setItem("gp_lang", lang);
+        applyLang();
+      }
+      function applyLang() {
+        document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+        document.documentElement.lang = lang;
+        document.getElementById("ltxt").textContent =
+          lang === "en" ? "العربية" : "English";
+        document.querySelectorAll("[data-e][data-a]").forEach((el) => {
+          el.textContent = el.getAttribute(
+            "data-" + (lang === "en" ? "e" : "a"),
+          );
+        });
+      }
+      function flipTheme() {
+        theme = theme === "light" ? "dark" : "light";
+        localStorage.setItem("gp_theme", theme);
+        applyTheme();
+      }
+      function applyTheme() {
+        document.documentElement.setAttribute("data-theme", theme);
+        document.getElementById("theme-ico").className =
+          theme === "light" ? "fa-solid fa-moon" : "fa-solid fa-sun";
+      }
+      function toast(m) {
+        document.getElementById("toast-msg").textContent = m;
+        const t = document.getElementById("toast");
+        t.classList.add("show");
+        setTimeout(() => t.classList.remove("show"), 2500);
+      }
+      function doSearch(e) {
+        e.preventDefault();
+        const gpa = parseFloat(document.getElementById("f-gpa").value);
+        const ielts = document.getElementById("f-ielts").value
+          ? parseFloat(document.getElementById("f-ielts").value)
+          : 0;
+        let v = true;
+        if (isNaN(gpa) || gpa < 0 || gpa > 4) {
+          document.getElementById("f-gpa").classList.add("err");
+          document.getElementById("gpa-err").classList.add("show");
+          v = false;
+        } else {
+          document.getElementById("f-gpa").classList.remove("err");
+          document.getElementById("gpa-err").classList.remove("show");
+        }
+        if (ielts && (ielts < 0 || ielts > 9)) {
+          document.getElementById("f-ielts").classList.add("err");
+          document.getElementById("ielts-err").classList.add("show");
+          v = false;
+        } else {
+          document.getElementById("f-ielts").classList.remove("err");
+          document.getElementById("ielts-err").classList.remove("show");
+        }
+        if (!v) return;
+        formData = {
+          field: document.getElementById("f-field").value,
+          deg: document.getElementById("f-deg").value,
+          gpa: gpa,
+          country: document.getElementById("f-country").value,
+          budget: parseInt(document.getElementById("f-budget").value, 10),
+          ielts: ielts,
+          interests: document
+            .getElementById("f-interests")
+            .value.toLowerCase()
+            .split(",")
+            .map((s) => s.trim())
+            .filter(Boolean),
+        };
+        localStorage.setItem("gp_form", JSON.stringify(formData));
+        compareList = [];
+        updateCmpBar();
+        go("results");
+        document.getElementById("loader").classList.add("show");
+        document.getElementById("res-grid").innerHTML = "";
+        setTimeout(() => {
+          document.getElementById("loader").classList.remove("show");
+          const s = DB.map((p) => ({ p, score: calcScore(p) }))
+            .filter((x) => x.score > 0)
+            .sort((a, b) => b.score - a.score);
+          renderResults(s);
+        }, 900);
+      }
+      function calcScore(p) {
+        let s = 0,
+          m = 0;
+        m += 30;
+        if (formData.field === "all" || p.fi === formData.field) s += 30;
+        else return 0;
+        m += 15;
+        if (p.deg.includes(formData.deg)) s += 15;
+        else s += 3;
+        m += 25;
+        if (formData.gpa >= p.gpa) s += 25;
+        else {
+          const d = p.gpa - formData.gpa;
+          if (d <= 0.3) s += 15;
+          else if (d <= 0.6) s += 8;
+          else return 0;
+        }
+        m += 15;
+        if (formData.country === "any" || p.co === formData.country) s += 15;
+        else return 0;
+        m += 10;
+        if (p.tui <= formData.budget) s += 10;
+        else return 0;
+        m += 5;
+        if (!formData.ielts || formData.ielts >= p.ielts) s += 5;
+        else if (formData.ielts >= p.ielts - 0.5) s += 3;
+        if (formData.interests.length) {
+          const mt = formData.interests.filter((i) =>
+            p.tags.some((t) => t.includes(i) || i.includes(t)),
+          );
+          s += Math.min(10, mt.length * 5);
+          m += 10;
+        }
+        return Math.round((s / m) * 100);
+      }
+      function renderResults(sc) {
+        const c = document.getElementById("res-grid");
+        document.getElementById("res-count").textContent =
+          lang === "en"
+            ? `Found ${sc.length} matching programs`
+            : `تم العثور على ${sc.length} برنامج`;
+        if (!sc.length) {
+          c.innerHTML = `<div class="no-res" style="grid-column:1/-1"><i class="fa-solid fa-face-sad-tear"></i><h3>${lang === "en" ? "No matches found" : "لم يتم العثور على تطابقات"}</h3><p style="color:var(--mut)">${lang === "en" ? "Try relaxing your filters or increasing budget" : "حاول تعديل المعايير"}</p></div>`;
+          return;
+        }
+        c.innerHTML = sc
+          .map(({ p, score }) => {
+            const sv = saved.includes(p.id);
+            const cm = compareList.includes(p.id);
+            const mc =
+              score >= 80
+                ? "var(--ok)"
+                : score >= 50
+                  ? "var(--warn)"
+                  : "var(--no)";
+            const tb =
+              p.tui === 0 ? "b-free" : p.tui <= 15000 ? "b-part" : "b-paid";
+            const tl =
+              p.tui === 0
+                ? lang === "en"
+                  ? "✨ Fully Funded"
+                  : "✨ ممول بالكامل"
+                : "$" + p.tui.toLocaleString() + "/yr";
+            return `<div class="pcard"><input type="checkbox" class="cmp-check" ${cm ? "checked" : ""} onchange="toggleCompare(${p.id})" title="${lang === "en" ? "Add to compare" : "إضافة للمقارنة"}"><div class="pcard-top"><div class="match-badge" style="color:${mc}">${score}% ${lang === "en" ? "Match" : "تطابق"}</div><h3>${lang === "en" ? p.ne : p.na}</h3><p><i class="fa-solid fa-university"></i> ${lang === "en" ? p.ue : p.ua}</p></div><div class="pcard-body"><div class="irow"><i class="fa-solid fa-location-dot"></i><strong>${lang === "en" ? "Country" : "الدولة"}:</strong> ${p.co}</div><div class="irow"><i class="fa-solid fa-clock"></i><strong>${lang === "en" ? "Duration" : "المدة"}:</strong> ${p.dur}</div><div class="irow"><i class="fa-solid fa-dollar-sign"></i><strong>${lang === "en" ? "Tuition" : "الرسوم"}:</strong> ${tl}</div><div class="irow"><i class="fa-solid fa-graduation-cap"></i><strong>${lang === "en" ? "Min GPA" : "أدنى معدل"}:</strong> ${p.gpa}/4.0</div><div class="irow"><i class="fa-solid fa-language"></i><strong>IELTS:</strong> ${p.ielts}+</div><div class="irow" style="align-items:flex-start"><i class="fa-solid fa-list-check" style="margin-top:3px"></i><div><strong>${lang === "en" ? "Requirements" : "المتطلبات"}:</strong><p style="font-size:.82rem;margin-top:3px;color:var(--mut)">${lang === "en" ? p.re : p.ra}</p></div></div><span class="badge ${tb}">${tl}</span></div><div class="pcard-foot"><a href="${getProgramDestination(p)}" target="_blank" rel="noopener noreferrer" class="btn btn-p btn-sm" style="flex:1" title="${getProgramTooltip(p)}">${getProgramButtonLabel(p)}</a><button class="btn btn-sm ${sv ? "btn-ok" : "btn-out"}" onclick="toggleSave(${p.id},this)" title="${lang === "en" ? "Save" : "حفظ"}"><i class="fa-solid fa-bookmark"></i></button></div></div>`;
+          })
+          .join("");
+      }
+      function toggleSave(id, b) {
+        const i = saved.indexOf(id);
+        if (i > -1) {
+          saved.splice(i, 1);
+          if (b) b.className = "btn btn-sm btn-out";
+          toast(lang === "en" ? "Removed from saved" : "تمت الإزالة");
+        } else {
+          saved.push(id);
+          if (b) b.className = "btn btn-sm btn-ok";
+          toast(lang === "en" ? "Saved successfully" : "تم الحفظ");
+        }
+        localStorage.setItem("gp_saved", JSON.stringify(saved));
+        updateSavedCount();
+      }
+      function updateSavedCount() {
+        document.getElementById("saved-count").textContent = saved.length;
+      }
+      function toggleCompare(id) {
+        const i = compareList.indexOf(id);
+        if (i > -1) compareList.splice(i, 1);
+        else {
+          if (compareList.length >= 4) {
+            toast(
+              lang === "en"
+                ? "Max 4 programs to compare"
+                : "الحد الأقصى 4 برامج",
+            );
+            return;
+          }
+          compareList.push(id);
+        }
+        updateCmpBar();
+      }
+      function updateCmpBar() {
+        const b = document.getElementById("cmp-bar");
+        document.getElementById("cmp-count").textContent = compareList.length;
+        if (compareList.length >= 2) b.classList.add("show");
+        else b.classList.remove("show");
+      }
+      function clearCompare() {
+        compareList = [];
+        updateCmpBar();
+        document
+          .querySelectorAll(".cmp-check")
+          .forEach((c) => (c.checked = false));
+      }
+      function openCompare() {
+        if (compareList.length < 2) {
+          toast(
+            lang === "en"
+              ? "Select at least 2 programs"
+              : "اختر برنامجين على الأقل",
+          );
+          return;
+        }
+        const ps = DB.filter((p) => compareList.includes(p.id));
+        const L = lang === "en";
+        let h =
+          '<table class="cmp-table"><tr><th>' +
+          (L ? "Feature" : "الميزة") +
+          "</th>";
+        ps.forEach((p) => {
+          h += `<th>${L ? p.ne : p.na}</th>`;
+        });
+        h += "</tr>";
+        const rows = [
+          [L ? "University" : "الجامعة", (p) => (L ? p.ue : p.ua)],
+          [L ? "Country" : "الدولة", (p) => p.co],
+          [
+            L ? "Tuition" : "الرسوم",
+            (p) =>
+              p.tui === 0
+                ? L
+                  ? "FREE"
+                  : "مجاني"
+                : "$" + p.tui.toLocaleString(),
+          ],
+          [L ? "Duration" : "المدة", (p) => p.dur],
+          [L ? "Min GPA" : "أدنى معدل", (p) => p.gpa + "/4.0"],
+          ["IELTS", (p) => p.ielts + "+"],
+          [
+            L ? "Requirements" : "المتطلبات",
+            (p) => `<span style="font-size:.8rem">${L ? p.re : p.ra}</span>`,
+          ],
+          [
+            L ? "Official Link" : "الرابط الرسمي",
+            (p) =>
+              `<a href="${getProgramDestination(p)}" target="_blank" rel="noopener noreferrer" class="btn btn-p btn-sm" style="display:inline-flex;padding:6px 12px;font-size:.75rem;white-space:nowrap">${getProgramButtonLabel(p, true)}</a>`,
+          ],
+        ];
+        rows.forEach(([lb, fn]) => {
+          h += `<tr><td><strong>${lb}</strong></td>`;
+          ps.forEach((p) => {
+            h += `<td>${fn(p)}</td>`;
+          });
+          h += "</tr";
+        });
+        h += "</table>";
+        document.getElementById("cmp-content").innerHTML = h;
+        document.getElementById("cmp-modal").classList.add("show");
+      }
+      function closeModal(id) {
+        document.getElementById(id).classList.remove("show");
+      }
+      function renderSaved() {
+        const c = document.getElementById("saved-grid");
+        const e = document.getElementById("saved-empty");
+        const ps = DB.filter((p) => saved.includes(p.id));
+        if (!ps.length) {
+          c.innerHTML = "";
+          e.style.display = "block";
+          return;
+        }
+        e.style.display = "none";
+        c.innerHTML = ps
+          .map((p) => {
+            const tl =
+              p.tui === 0
+                ? lang === "en"
+                  ? "FREE"
+                  : "مجاني"
+                : "$" + p.tui.toLocaleString() + "/yr";
+            return `<div class="pcard"><div class="pcard-top"><h3 style="padding-left:0;margin-top:0">${lang === "en" ? p.ne : p.na}</h3><p><i class="fa-solid fa-university"></i> ${lang === "en" ? p.ue : p.ua}</p></div><div class="pcard-body"><div class="irow"><i class="fa-solid fa-location-dot"></i>${p.co}</div><div class="irow"><i class="fa-solid fa-dollar-sign"></i>${tl}</div><div class="irow"><i class="fa-solid fa-graduation-cap"></i>GPA ${p.gpa}+</div><div class="irow"><i class="fa-solid fa-clock"></i>${p.dur}</div></div><div class="pcard-foot"><a href="${getProgramDestination(p)}" target="_blank" rel="noopener noreferrer" class="btn btn-p btn-sm" style="flex:1" title="${getProgramTooltip(p)}">${getProgramButtonLabel(p, true)}</a><button class="btn btn-sm btn-out" style="color:var(--no)" onclick="toggleSave(${p.id});renderSaved()"><i class="fa-solid fa-trash"></i></button></div></div>`;
+          })
+          .join("");
+      }
+      function initChat() {
+        const L = lang === "en";
+        const hd = Object.keys(formData).length > 0;
+        const w = L
+          ? `👋 Hello! I'm your GradPath AI Advisor. I can recommend Master's programs, provide direct scholarship apply links, compare universities, and guide you through applications.\n\n${hd ? "✅ I see you already filled the search form — I can give you personalized advice!" : "💡 Tip: Fill the search form first for personalized recommendations!"}`
+          : `👋 مرحباً! أنا مستشار جراد باث الذكي. يمكنني التوصية ببرامج الماجستير وتوفير روابط التقديم المباشرة للمنح ومقارنة الجامعات.\n\n${hd ? "✅ أرى أنك ملأت نموذج البحث — يمكنني تقديم نصائح مخصصة!" : "💡 نصيحة: املأ نموذج البحث أولاً للحصول على توصيات مخصصة!"}`;
+        addMsg(w, "bot", true);
+        chatHistory.push({ role: "bot", text: w });
+      }
+      function formatMsgText(t) {
+        if (!t) return "";
+        const e = t
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+        return e.replace(
+          /(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/g,
+          (u) =>
+            `<a href="${u}" target="_blank" rel="noopener noreferrer" class="chat-link">${u} <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.72rem"></i></a>`,
+        );
+      }
+      function addMsg(t, ty, qr) {
+        const c = document.getElementById("chat-msgs");
+        const d = document.createElement("div");
+        d.className = "msg " + ty;
+        d.innerHTML = formatMsgText(t);
+        if (qr && ty === "bot") {
+          const q = document.createElement("div");
+          q.className = "qr";
+          const bs =
+            lang === "en"
+              ? [
+                  "My best matches",
+                  "Scholarships",
+                  "Japan MEXT",
+                  "Korea GKS",
+                  "Turkey Scholarship",
+                  "China CSC",
+                  "Chevening UK",
+                  "DAAD Germany",
+                ]
+              : [
+                  "أفضل تطابقاتي",
+                  "المنح الدراسية",
+                  "منحة مكست اليابان",
+                  "منحة GKS كوريا",
+                  "منحة تركيا",
+                  "منحة الصين CSC",
+                  "تشيفنينغ بريطانيا",
+                  "DAAD ألمانيا",
+                ];
+          bs.forEach((lb) => {
+            const b = document.createElement("button");
+            b.className = "qr-btn";
+            b.textContent = lb;
+            b.type = "button";
+            b.onclick = () => {
+              document.getElementById("chat-inp").value = lb;
+              document.querySelector(".chat-in").requestSubmit();
+            };
+            q.appendChild(b);
+          });
+          d.appendChild(q);
+        }
+        c.appendChild(d);
+        c.scrollTop = c.scrollHeight;
+      }
+      function showTyping() {
+        const c = document.getElementById("chat-msgs");
+        const d = document.createElement("div");
+        d.className = "typing";
+        d.id = "typing-ind";
+        d.innerHTML = "<span></span><span></span><span></span>";
+        c.appendChild(d);
+        c.scrollTop = c.scrollHeight;
+      }
+      function hideTyping() {
+        document.getElementById("typing-ind")?.remove();
+      }
+      function sendMsg(e) {
+        e.preventDefault();
+        const i = document.getElementById("chat-inp");
+        const m = i.value.trim();
+        if (!m) return;
+        addMsg(m, "user");
+        i.value = "";
+        chatHistory.push({ role: "user", text: m });
+        showTyping();
+        setTimeout(
+          () => {
+            hideTyping();
+            const r = aiReply(m);
+            addMsg(r, "bot");
+            chatHistory.push({ role: "bot", text: r });
+          },
+          700 + Math.random() * 400,
+        );
+      }
+      function aiReply(q) {
+        const L = lang === "en";
+        const ql = q.toLowerCase();
+        const hd = Object.keys(formData).length > 0;
+        const fs = hd
+          ? `📋 ${L ? "Your profile" : "ملفك"}: GPA ${formData.gpa}, ${formData.field === "all" ? (L ? "Any field" : "أي مجال") : formData.field}, ${formData.country === "any" ? (L ? "Any country" : "أي دولة") : formData.country}, ${L ? "Budget" : "الميزانية"} $${formData.budget}\n\n`
+          : "";
+        if (
+          ql.includes("japan") ||
+          ql.includes("mext") ||
+          ql.includes("يابان") ||
+          ql.includes("مكست")
+        )
+          return L
+            ? "🇯🇵 Japan MEXT Scholarship:\n\n✅ Full tuition + ¥143,000/month stipend + roundtrip flights\n✅ Application through Japanese Embassy or university recommendation\n\nDirect Official Guideline & Application Link:\nhttps://www.studyinjapan.go.jp/en/planning/scholarships/"
+            : "🇯🇵 منحة مكست اليابانية MEXT:\n\n✅ رسوم كاملة + 143,000 ين/شهر + تذاكر طيران\n✅ التقديم عبر السفارة اليابانية أو ترشيح الجامعة\n\nرابط التقديم والدليل الرسمي:\nhttps://www.studyinjapan.go.jp/en/planning/scholarships/";
+        if (
+          ql.includes("korea") ||
+          ql.includes("gks") ||
+          ql.includes("kaist") ||
+          ql.includes("كوريا")
+        )
+          return L
+            ? "🇰🇷 South Korea Scholarships:\n\n1. Global Korea Scholarship (GKS):\nFull ride + monthly stipend + Korean course\nOfficial Notice: https://www.studyinkorea.go.kr/en/scholarship/Gks1Notice.do\n\n2. KAIST Direct Admission Portal:\nFull tuition waiver + living allowance\nDirect Portal: https://admission.kaist.ac.kr/intl-graduate/"
+            : "🇰🇷 منح كوريا الجنوبية:\n\n1. منحة كوريا العالمية (GKS):\nتغطية كاملة + راتب شهري + سنة لغة كورية\nالرابط الرسمي: https://www.studyinkorea.go.kr/en/scholarship/Gks1Notice.do\n\n2. بوابة تقديم كايست المباشرة KAIST:\nإعفاء كامل من الرسوم + بدل معيشة\nبوابة التقديم المباشرة: https://admission.kaist.ac.kr/intl-graduate/";
+        if (
+          ql.includes("turkey") ||
+          ql.includes("türkiye") ||
+          ql.includes("تركيا")
+        )
+          return L
+            ? "🇹🇷 Türkiye Bursları Scholarship:\n\n✅ Full tuition + ₺4,500/month + free housing + flights\n✅ NO IELTS required! Free 1-year Turkish language\n\nDirect Application Portal (TBBS):\nhttps://tbbs.turkiyeburslari.gov.tr/"
+            : "🇹🇷 منحة تركيا الحكومية (Türkiye Bursları):\n\n✅ رسوم كاملة + 4,500 ليرة/شهر + سكن مجاني + طيران\n✅ بدون آيلتس! مع سنة لغة تركية مجانية\n\nبوابة التقديم المباشرة (TBBS):\nhttps://tbbs.turkiyeburslari.gov.tr/";
+        if (ql.includes("china") || ql.includes("csc") || ql.includes("صين"))
+          return L
+            ? "🇨🇳 Chinese Government Scholarship (CSC):\n\n✅ Full tuition + ¥3,000/month + on-campus housing + medical\n\nDirect Online Application System:\nhttps://studyinchina.csc.edu.cn/#/login"
+            : "🇨🇳 منحة الحكومة الصينية (CSC):\n\n✅ رسوم كاملة + 3,000 يوان/شهر + سكن جامعي + تأمين\n\nبوابة التقديم الإلكترونية المباشرة:\nhttps://studyinchina.csc.edu.cn/#/login";
+        if (ql.includes("chevening") || ql.includes("تشيفنينغ"))
+          return L
+            ? "🇬🇧 UK Chevening Scholarship:\n\n✅ Full master's tuition + £1,300/month stipend + UK flights\n✅ 2+ years of work experience required\n\nOfficial Application System:\nhttps://www.chevening.org/scholarships/application/"
+            : "🇬🇧 منحة تشيفنينغ البريطانية (Chevening):\n\n✅ رسوم الماجستير كاملة + 1,300£/شهر + طيران\n✅ تتطلب سنتين خبرة عملية على الأقل\n\nصفحة التقديم الرسمية:\nhttps://www.chevening.org/scholarships/application/";
+        if (
+          ql.includes("daad") ||
+          ql.includes("ألماني") ||
+          ql.includes("germany") ||
+          ql.includes("german")
+        )
+          return L
+            ? "🇩🇪 Germany & DAAD Scholarships:\n\n✅ Most public universities tuition is FREE (e.g. TU Munich, RWTH Aachen, TU Berlin)\n✅ DAAD EPOS offers €934/month for development students\n\nOfficial DAAD Scholarship Portal:\nhttps://www.daad.de/en/study-and-research-in-germany/scholarships/"
+            : "🇩🇪 ألمانيا ومنح DAAD:\n\n✅ معظم الجامعات الحكومية مجانية تماماً\n✅ منحة DAAD EPOS تقدم 934€ شهرياً\n\nقاعدة بيانات وبوابة منح DAAD:\nhttps://www.daad.de/en/study-and-research-in-germany/scholarships/";
+        if (
+          ql.includes("fulbright") ||
+          ql.includes("usa") ||
+          ql.includes("america") ||
+          ql.includes("أمريكا") ||
+          ql.includes("فولبرايت")
+        )
+          return L
+            ? "🇺🇸 USA Fulbright Foreign Student Program:\n\n✅ Full tuition + living stipend + health insurance + flights\n\nOfficial Application Portal:\nhttps://foreign.fulbrightonline.org/apply"
+            : "🇺🇸 برنامج فولبرايت الأمريكي للطلاب الأجانب:\n\n✅ رسوم دراسية كاملة + راتب معيشي + تأمين + طيران\n\nبوابة التقديم الرسمية:\nhttps://foreign.fulbrightonline.org/apply";
+        if (
+          ql.includes("canada") ||
+          ql.includes("vanier") ||
+          ql.includes("كندا") ||
+          ql.includes("فانير")
+        )
+          return L
+            ? "🇨🇦 Canada Vanier Scholarships:\n\n✅ CAD $50,000/year for graduate research\n\nOfficial Nomination & Application Process:\nhttps://vanier.gc.ca/en/nomination_process-processus_de_mise_en_candidature.html"
+            : "🇨🇦 منح فانير الكندية (Vanier):\n\n✅ 50,000 دولار كندي سنوياً للأبحاث والدراسات العليا\n\nدليل الترشيح والتقديم الرسمي:\nhttps://vanier.gc.ca/en/nomination_process-processus_de_mise_en_candidature.html";
+        if (ql.includes("australia") || ql.includes("أستراليا"))
+          return L
+            ? "🇦🇺 Australia Awards Scholarship:\n\n✅ 100% tuition + AUD 3,000/month allowance + flights + health cover\n\nDirect OASIS Application Portal:\nhttps://oasis.dfat.gov.au/"
+            : "🇦🇺 منح أستراليا (Australia Awards):\n\n✅ رسوم كاملة 100% + 3,000 دولار أسترالي شهرياً + طيران\n\nبوابة التقديم المباشرة OASIS:\nhttps://oasis.dfat.gov.au/";
+        if (
+          ql.includes("singapore") ||
+          ql.includes("singa") ||
+          ql.includes("سنغافورة")
+        )
+          return L
+            ? "🇸🇬 Singapore SINGA Award:\n\n✅ Full tuition + SGD 2,700/month + airfare grant\n\nDirect Official Portal:\nhttps://www.a-star.edu.sg/Scholarships/for-graduate-studies/singa-scholarship"
+            : "🇸🇬 منحة سنغافورة SINGA:\n\n✅ رسوم كاملة + 2,700 دولار سنغافوري شهرياً + طيران\n\nالبوابة الرسمية المباشرة:\nhttps://www.a-star.edu.sg/Scholarships/for-graduate-studies/singa-scholarship";
+        if (
+          ql.includes("scholarship") ||
+          ql.includes("fund") ||
+          ql.includes("free") ||
+          ql.includes("منح") ||
+          ql.includes("مجان")
+        )
+          return L
+            ? "🎓 Top Direct Scholarship Portals:\n\n🇹🇷 Turkey (TBBS): https://tbbs.turkiyeburslari.gov.tr/\n🇨🇳 China (CSC): https://studyinchina.csc.edu.cn/#/login\n🇸🇪 Sweden (SI): https://apply.si.se/\n🇦🇺 Australia (OASIS): https://oasis.dfat.gov.au/\n🇸🇦 KAUST (Saudi): https://apply.kaust.edu.sa/\n🇰🇷 KAIST (Korea): https://admission.kaist.ac.kr/intl-graduate/\n🇬🇧 Chevening (UK): https://www.chevening.org/scholarships/application/\n🇩🇪 Germany (DAAD): https://www.daad.de/en/study-and-research-in-germany/scholarships/\n\n💡 Tap any link above to open directly in a new tab!"
+            : "🎓 أبرز روابط التقديم المباشرة للمنح:\n\n🇹🇷 تركيا (TBBS): https://tbbs.turkiyeburslari.gov.tr/\n🇨🇳 الصين (CSC): https://studyinchina.csc.edu.cn/#/login\n🇸🇪 السويد (SI): https://apply.si.se/\n🇦🇺 أستراليا (OASIS): https://oasis.dfat.gov.au/\n🇸🇦 كاوست السعودية: https://apply.kaust.edu.sa/\n🇰🇷 كايست كوريا: https://admission.kaist.ac.kr/intl-graduate/\n🇬🇧 تشيفنينغ: https://www.chevening.org/scholarships/application/\n🇩🇪 ألمانيا DAAD: https://www.daad.de/en/study-and-research-in-germany/scholarships/\n\n💡 اضغط على أي رابط وسيفتح فوراً في نافذة جديدة!";
+        if (
+          ql.includes("match") ||
+          ql.includes("recommend") ||
+          ql.includes("best") ||
+          ql.includes("suggest") ||
+          ql.includes("تطابق") ||
+          ql.includes("أفضل") ||
+          ql.includes("توصي")
+        ) {
+          if (!hd)
+            return L
+              ? '⚠️ Please fill the search form first! Go to "Find Programs" and enter your details.'
+              : "⚠️ من فضلك املأ نموذج البحث أولاً!";
+          const sc = DB.map((p) => ({ p, s: calcScore(p) }))
+            .filter((x) => x.s > 0)
+            .sort((a, b) => b.s - a.s)
+            .slice(0, 5);
+          if (!sc.length)
+            return (
+              fs +
+              (L
+                ? "❌ No programs match your profile. Try increasing budget."
+                : "❌ لا توجد برامج تطابق ملفك.")
+            );
+          let r =
+            fs +
+            (L ? "🎯 Your Top 5 Matches:\n\n" : "🎯 أفضل 5 تطابقات لك:\n\n");
+          sc.forEach(({ p, s }) => {
+            r += `${s}% — ${L ? p.ne : p.na}\n   ${L ? p.ue : p.ua} (${p.co}) | ${p.tui === 0 ? "FREE" : "$" + p.tui}\n   Apply/Info: ${getProgramDestination(p)}\n\n`;
+          });
+          return r.trim();
+        }
+        if (
+          ql.includes("cs") ||
+          ql.includes("computer") ||
+          ql.includes("حاسب") ||
+          ql.includes("programming") ||
+          ql.includes("برمج")
+        ) {
+          const ms = DB.filter((p) => p.fi === "CS");
+          let r =
+            fs +
+            (L
+              ? "🖥️ Top Computer Science Programs:\n\n"
+              : "🖥️ أفضل برامج علوم الحاسب:\n\n");
+          ms.slice(0, 6).forEach((p) => {
+            r += `• ${L ? p.ne : p.na}\n   ${L ? p.ue : p.ua} (${p.co}) | ${p.tui === 0 ? "FREE" : "$" + p.tui}\n   Link: ${getProgramDestination(p)}\n\n`;
+          });
+          return r.trim();
+        }
+        if (
+          ql.includes("budget") ||
+          ql.includes("cheap") ||
+          ql.includes("ميزانية") ||
+          ql.includes("رخيص")
+        ) {
+          const ch = DB.filter((p) => p.tui <= 5000).sort(
+            (a, b) => a.tui - b.tui,
+          );
+          let r =
+            fs +
+            (L
+              ? "💰 Low Budget / Free Programs:\n\n"
+              : "💰 برامج مجانية أو منخفضة التكلفة:\n\n");
+          ch.slice(0, 6).forEach((p) => {
+            r += `• ${L ? p.ne : p.na} — ${p.co} (${p.tui === 0 ? "FREE" : "$" + p.tui})\n   ${getProgramDestination(p)}\n\n`;
+          });
+          return r.trim();
+        }
+        if (ql.includes("gpa") || ql.includes("grade") || ql.includes("معدل"))
+          return (
+            (hd ? fs : "") +
+            (L
+              ? "📊 GPA Guide:\n\n• 3.7+ → Ivy League, Oxford, Cambridge, MIT\n• 3.3–3.6 → KAUST, Toronto, Imperial, ETH Zurich\n• 3.0–3.2 → MEXT Japan, CSC China, Chevening UK, DAAD Germany\n• 2.8+ → Türkiye Bursları (Turkey)\n• 2.64+ → GKS (South Korea)"
+              : "📊 دليل المعدل:\n\n• 3.7+ → هارفارد، أكسفورد، MIT\n• 3.3–3.6 → كاوست، تورنتو، إمبريال\n• 3.0–3.2 → مكست، CSC، تشيفنينغ، DAAD\n• 2.8+ → منحة تركيا\n• 2.64+ → منحة كوريا GKS")
+          );
+        if (
+          ql.includes("ielts") ||
+          ql.includes("toefl") ||
+          ql.includes("آيلتس") ||
+          ql.includes("توفل")
+        )
+          return L
+            ? "📝 Language Requirements:\n\n• Most Western Programs: IELTS 6.5+ or TOEFL 90+\n• Top Tier: IELTS 7.0+\n\n🌟 NO IELTS REQUIRED:\n• 🇹🇷 Türkiye Bursları\n• 🇯🇵 Japan MEXT — Embassy route\n• 🇰🇷 Korea GKS"
+            : "📝 متطلبات اللغة:\n\n• البرامج الغربية: آيلتس 6.5+\n• الجامعات الكبرى: آيلتس 7.0+\n\n🌟 بدون آيلتس:\n• 🇹🇷 منحة تركيا\n• 🇯🇵 منحة اليابان MEXT\n• 🇰🇷 منحة كوريا GKS";
+        if (ql.includes("visa") || ql.includes("تأشير") || ql.includes("فيزا"))
+          return L
+            ? "🛂 Student Visa Guide:\n\n🇩🇪 Germany: Blocked Account (€11,208/yr) + Admission\n🇬🇧 UK: CAS + Maintenance Funds\n🇨🇦 Canada: Study Permit + GIC\n🇯🇵 Japan: Certificate of Eligibility (CoE)\n🇹🇷 Turkey: Student Residence Permit\n\n⏰ Start 3-4 months before intake!"
+            : "🛂 دليل التأشيرات:\n\n🇩🇪 ألمانيا: حساب مغلق + قبول\n🇬🇧 بريطانيا: CAS + إثبات مالي\n🇨🇦 كندا: تصريح دراسة + GIC\n🇯🇵 اليابان: شهادة CoE\n🇹🇷 تركيا: إقامة طالب\n\n⏰ ابدأ قبل 3-4 أشهر!";
+        if (
+          ql.includes("deadline") ||
+          ql.includes("when") ||
+          ql.includes("موعد") ||
+          ql.includes("متى")
+        )
+          return L
+            ? "📅 Major Scholarship Deadlines:\n\n• 🇹🇷 Türkiye: Jan 10 – Feb 20\n• 🇰🇷 GKS: Feb – Mar\n• 🇯🇵 MEXT: Apr – May\n• 🇨🇳 CSC: Jan – Apr\n• 🇬🇧 Chevening: Nov\n• 🇦🇺 Australia Awards: Apr 30"
+            : "📅 مواعيد المنح:\n\n• 🇹🇷 تركيا: 10 يناير – 20 فبراير\n• 🇰🇷 كوريا: فبراير – مارس\n• 🇯🇵 اليابان: أبريل – مايو\n• 🇨🇳 الصين: يناير – أبريل\n• 🇬🇧 تشيفنينغ: نوفمبر";
+        if (
+          ql.includes("hello") ||
+          ql.includes("hi ") ||
+          ql === "hi" ||
+          ql.includes("hey") ||
+          ql.includes("مرحبا") ||
+          ql.includes("السلام")
+        )
+          return L
+            ? "👋 Hi! Ask me for:\n\n• Direct scholarship apply portals\n• Best matches for your GPA\n• Country guides\n• Scholarships with NO IELTS\n• Visa and deadlines"
+            : "👋 مرحباً! اسألني عن:\n\n• روابط التقديم المباشرة\n• أفضل البرامج لمعدلك\n• أدلة الدول\n• منح بدون آيلتس";
+        if (ql.includes("thank") || ql.includes("شكر"))
+          return L
+            ? "😊 You're welcome! Tap any direct link to start. Good luck!"
+            : "😊 على الرحب والسعة! بالتوفيق!";
+        return L
+          ? '🤔 I can help with programs and direct scholarship portals!\n\nTry: "Scholarships", "Turkey scholarship link", "Japan MEXT", "My best matches"'
+          : '🤔 يمكنني مساعدتك في البرامج وروابط المنح!\n\nجرب: "المنح الدراسية"، "منحة تركيا"، "أفضل تطابقاتي"';
+      }
+      applyLang();
+      applyTheme();
+      updateSavedCount();
+    </script>
+  </body>
+</html>
